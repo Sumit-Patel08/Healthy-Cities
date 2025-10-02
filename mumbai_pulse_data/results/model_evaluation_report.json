@@ -1,0 +1,13 @@
+{
+  "evaluation_timestamp": "2025-10-02T22:41:25.487853",
+  "models_evaluated": 4,
+  "successful_evaluations": 2,
+  "failed_evaluations": 2,
+  "detailed_results": {
+    "environmental_health_predictor": {
+      "model_type": "regression",
+      "metrics": {
+        "rmse": 7.388372304890943,
+        "mae": 1.5869874719071018,
+        "r2": -0.013788075977819503,
+        "mean_prediction": 

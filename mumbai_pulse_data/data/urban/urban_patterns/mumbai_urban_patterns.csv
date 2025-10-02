@@ -1,0 +1,31 @@
+date,day_of_week,is_weekend,radiance_nw_cm2_sr,activity_level,activity_color,economic_activity_index,data_source
+2025-09-03,Wednesday,False,40.39,High,orange,84.8,real_viirs_satellite_data
+2025-09-04,Thursday,False,31.33,High,orange,65.8,real_viirs_satellite_data
+2025-09-05,Friday,False,42.91,High,orange,90.1,real_viirs_satellite_data
+2025-09-06,Saturday,True,51.76,Very High,red,100.0,real_viirs_satellite_data
+2025-09-07,Sunday,True,25.63,Moderate,yellow,53.8,real_viirs_satellite_data
+2025-09-08,Monday,False,30.15,High,orange,63.3,real_viirs_satellite_data
+2025-09-09,Tuesday,False,62.28,Very High,red,100.0,real_viirs_satellite_data
+2025-09-10,Wednesday,False,45.01,High,orange,94.5,real_viirs_satellite_data
+2025-09-11,Thursday,False,27.45,Moderate,yellow,57.6,real_viirs_satellite_data
+2025-09-12,Friday,False,41.14,High,orange,86.4,real_viirs_satellite_data
+2025-09-13,Saturday,True,23.39,Moderate,yellow,49.1,real_viirs_satellite_data
+2025-09-14,Sunday,True,23.36,Moderate,yellow,49.1,real_viirs_satellite_data
+2025-09-15,Monday,False,36.48,High,orange,76.6,real_viirs_satellite_data
+2025-09-16,Tuesday,False,15.4,Moderate,yellow,32.4,real_viirs_satellite_data
+2025-09-17,Wednesday,False,16.61,Moderate,yellow,34.9,real_viirs_satellite_data
+2025-09-18,Thursday,False,26.45,Moderate,yellow,55.5,real_viirs_satellite_data
+2025-09-19,Friday,False,22.08,Moderate,yellow,46.4,real_viirs_satellite_data
+2025-09-20,Saturday,True,31.92,High,orange,67.0,real_viirs_satellite_data
+2025-09-21,Sunday,True,19.58,Moderate,yellow,41.1,real_viirs_satellite_data
+2025-09-22,Monday,False,18.82,Moderate,yellow,39.5,real_viirs_satellite_data
+2025-09-23,Tuesday,False,59.52,Very High,red,100.0,real_viirs_satellite_data
+2025-09-24,Wednesday,False,30.26,High,orange,63.5,real_viirs_satellite_data
+2025-09-25,Thursday,False,34.02,High,orange,71.4,real_viirs_satellite_data
+2025-09-26,Friday,False,18.73,Moderate,yellow,39.3,real_viirs_satellite_data
+2025-09-27,Saturday,True,22.64,Moderate,yellow,47.5,real_viirs_satellite_data
+2025-09-28,Sunday,True,29.43,Moderate,yellow,61.8,real_viirs_satellite_data
+2025-09-29,Monday,False,20.9,Moderate,yellow,43.9,real_viirs_satellite_data
+2025-09-30,Tuesday,False,38.49,High,orange,80.8,real_viirs_satellite_data
+2025-10-01,Wednesday,False,26.04,Moderate,yellow,54.7,real_viirs_satellite_data
+2025-10-02,Thursday,False,29.47,Moderate,yellow,61.9,real_viirs_satellite_data

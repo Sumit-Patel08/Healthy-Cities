@@ -1,0 +1,267 @@
+{
+  "model_type": "environmental_health_predictor",
+  "algorithm": "xgboost",
+  "features": [
+    "aod_550nm",
+    "no2_column_density",
+    "humidity_percent",
+    "pm25_estimated",
+    "aqi_estimated",
+    "aqi_color",
+    "soil_moisture",
+    "precipitation_mm",
+    "ndwi",
+    "flood_risk_score",
+    "risk_color",
+    "is_monsoon_season",
+    "data_source_flood",
+    "day_of_week",
+    "is_weekend",
+    "radiance_nw_cm2_sr",
+    "activity_color",
+    "economic_activity_index",
+    "data_source_urban",
+    "T2M",
+    "RH2M",
+    "heat_index_c",
+    "heat_index_f",
+    "heat_risk_level",
+    "heat_risk_color",
+    "T2M_power",
+    "T2M_MAX",
+    "T2M_MIN",
+    "RH2M_power",
+    "WS10M",
+    "PRECTOTCORR",
+    "day_of_year",
+    "month",
+    "is_monsoon",
+    "season",
+    "environmental_stress_index",
+    "air_quality_composite",
+    "water_stress_index",
+    "urban_environmental_load",
+    "aqi_estimated_lag1",
+    "aqi_estimated_lag3",
+    "flood_risk_score_lag1",
+    "flood_risk_score_lag3",
+    "aqi_estimated_7day_avg",
+    "aqi_estimated_7day_std",
+    "flood_risk_score_7day_avg",
+    "flood_risk_score_7day_std",
+    "environmental_stress_index_7day_avg",
+    "environmental_stress_index_7day_std",
+    "aqi_risk_level",
+    "flood_risk_level"
+  ],
+  "target": "environmental_health_score",
+  "training_samples": 585,
+  "test_samples": 146,
+  "trained_timestamp": "2025-10-02T22:17:18.383566",
+  "feature_importance": [
+    {
+      "feature": "aod_550nm",
+      "importance": 0.0
+    },
+    {
+      "feature": "no2_column_density",
+      "importance": 0.0
+    },
+    {
+      "feature": "humidity_percent",
+      "importance": 0.0
+    },
+    {
+      "feature": "pm25_estimated",
+      "importance": 0.0
+    },
+    {
+      "feature": "aqi_estimated",
+      "importance": 0.0
+    },
+    {
+      "feature": "aqi_color",
+      "importance": 0.0
+    },
+    {
+      "feature": "soil_moisture",
+      "importance": 0.0
+    },
+    {
+      "feature": "precipitation_mm",
+      "importance": 0.0
+    },
+    {
+      "feature": "ndwi",
+      "importance": 0.0
+    },
+    {
+      "feature": "flood_risk_score",
+      "importance": 0.0
+    },
+    {
+      "feature": "risk_color",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_monsoon_season",
+      "importance": 0.0
+    },
+    {
+      "feature": "data_source_flood",
+      "importance": 0.0
+    },
+    {
+      "feature": "day_of_week",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_weekend",
+      "importance": 0.0
+    },
+    {
+      "feature": "radiance_nw_cm2_sr",
+      "importance": 0.0
+    },
+    {
+      "feature": "activity_color",
+      "importance": 0.0
+    },
+    {
+      "feature": "economic_activity_index",
+      "importance": 0.0
+    },
+    {
+      "feature": "data_source_urban",
+      "importance": 0.0
+    },
+    {
+      "feature": "T2M",
+      "importance": 0.0
+    },
+    {
+      "feature": "RH2M",
+      "importance": 0.0
+    },
+    {
+      "feature": "heat_index_c",
+      "importance": 0.0
+    },
+    {
+      "feature": "heat_index_f",
+      "importance": 0.0
+    },
+    {
+      "feature": "heat_risk_level",
+      "importance": 0.0
+    },
+    {
+      "feature": "heat_risk_color",
+      "importance": 0.0
+    },
+    {
+      "feature": "T2M_power",
+      "importance": 0.0
+    },
+    {
+      "feature": "T2M_MAX",
+      "importance": 0.0
+    },
+    {
+      "feature": "T2M_MIN",
+      "importance": 0.0
+    },
+    {
+      "feature": "RH2M_power",
+      "importance": 0.0
+    },
+    {
+      "feature": "WS10M",
+      "importance": 0.0
+    },
+    {
+      "feature": "PRECTOTCORR",
+      "importance": 0.0
+    },
+    {
+      "feature": "day_of_year",
+      "importance": 0.0
+    },
+    {
+      "feature": "month",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_monsoon",
+      "importance": 0.0
+    },
+    {
+      "feature": "season",
+      "importance": 0.0
+    },
+    {
+      "feature": "environmental_stress_index",
+      "importance": 0.0
+    },
+    {
+      "feature": "air_quality_composite",
+      "importance": 0.0
+    },
+    {
+      "feature": "water_stress_index",
+      "importance": 0.0
+    },
+    {
+      "feature": "urban_environmental_load",
+      "importance": 0.0
+    },
+    {
+      "feature": "aqi_estimated_lag1",
+      "importance": 0.0
+    },
+    {
+      "feature": "aqi_estimated_lag3",
+      "importance": 0.0
+    },
+    {
+      "feature": "flood_risk_score_lag1",
+      "importance": 0.0
+    },
+    {
+      "feature": "flood_risk_score_lag3",
+      "importance": 0.0
+    },
+    {
+      "feature": "aqi_estimated_7day_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "aqi_estimated_7day_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "flood_risk_score_7day_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "flood_risk_score_7day_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "environmental_stress_index_7day_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "environmental_stress_index_7day_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "aqi_risk_level",
+      "importance": 0.0
+    },
+    {
+      "feature": "flood_risk_level",
+      "importance": 0.0
+    }
+  ]
+}

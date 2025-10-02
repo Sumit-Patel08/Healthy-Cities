@@ -1,0 +1,1580 @@
+{
+  "model_type": "urban_environmental_impact_analyzer",
+  "urban_features": [
+    "radiance_nw_cm2_sr",
+    "activity_color",
+    "economic_activity_index",
+    "data_source_urban",
+    "urban_environmental_load"
+  ],
+  "environmental_features": [
+    "aod_550nm",
+    "no2_column_density",
+    "aqi_estimated",
+    "aqi_color",
+    "flood_risk_score",
+    "data_source_flood",
+    "heat_index_c",
+    "heat_index_f",
+    "heat_risk_level",
+    "heat_risk_color",
+    "air_quality_composite",
+    "aqi_estimated_lag1",
+    "aqi_estimated_lag3",
+    "flood_risk_score_lag1",
+    "flood_risk_score_lag3",
+    "aqi_estimated_7day_avg",
+    "aqi_estimated_7day_std",
+    "flood_risk_score_7day_avg",
+    "flood_risk_score_7day_std",
+    "aqi_risk_level",
+    "flood_risk_level"
+  ],
+  "correlations": {
+    "radiance_nw_cm2_sr": {
+      "aod_550nm": {
+        "pearson_correlation": 0.9711320959221691,
+        "pearson_p_value": 0.0,
+        "spearman_correlation": 0.8335352215941152,
+        "spearman_p_value": 4.899774700722201e-190,
+        "significant": "True"
+      },
+      "no2_column_density": {
+        "pearson_correlation": -0.1218201785689717,
+        "pearson_p_value": 0.0009657595640888255,
+        "spearman_correlation": -0.1988459178047994,
+        "spearman_p_value": 5.919201205202618e-08,
+        "significant": "True"
+      },
+      "aqi_estimated": {
+        "pearson_correlation": 0.6717541281838759,
+        "pearson_p_value": 4.4002146387208583e-97,
+        "spearman_correlation": 0.7413020252226652,
+        "spearman_p_value": 2.2994122782555838e-128,
+        "significant": "True"
+      },
+      "aqi_color": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score": {
+        "pearson_correlation": 0.19126309558732232,
+        "pearson_p_value": 1.883230143361415e-07,
+        "spearman_correlation": -0.06672885704546017,
+        "spearman_p_value": 0.0713770049791346,
+        "significant": "True"
+      },
+      "data_source_flood": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "heat_index_c": {
+        "pearson_correlation": -0.04923833277208304,
+        "pearson_p_value": 0.1835888547849374,
+        "spearman_correlation": -0.015278415519887092,
+        "spearman_p_value": 0.6800463748907144,
+        "significant": "False"
+      },
+      "heat_index_f": {
+        "pearson_correlation": -0.04923833277208306,
+        "pearson_p_value": 0.1835888547849374,
+        "spearman_correlation": -0.015278415519887092,
+        "spearman_p_value": 0.6800463748907144,
+        "significant": "False"
+      },
+      "heat_risk_level": {
+        "pearson_correlation": 0.077638312700784,
+        "pearson_p_value": 0.03584474863439207,
+        "spearman_correlation": 0.06261954801583793,
+        "spearman_p_value": 0.09068246199756864,
+        "significant": "True"
+      },
+      "heat_risk_color": {
+        "pearson_correlation": -0.077638312700784,
+        "pearson_p_value": 0.03584474863439207,
+        "spearman_correlation": -0.06261954801583793,
+        "spearman_p_value": 0.09068246199756864,
+        "significant": "True"
+      },
+      "air_quality_composite": {
+        "pearson_correlation": 0.7373054210332548,
+        "pearson_p_value": 2.673487408363887e-126,
+        "spearman_correlation": 0.5411990180679654,
+        "spearman_p_value": 7.451160541009519e-57,
+        "significant": "True"
+      },
+      "aqi_estimated_lag1": {
+        "pearson_correlation": 0.2131689666326627,
+        "pearson_p_value": 5.8630304353546795e-09,
+        "spearman_correlation": -0.10012102748903498,
+        "spearman_p_value": 0.006745565762035152,
+        "significant": "True"
+      },
+      "aqi_estimated_lag3": {
+        "pearson_correlation": 0.25169146776818396,
+        "pearson_p_value": 5.027541786563589e-12,
+        "spearman_correlation": 0.18180132711368244,
+        "spearman_p_value": 7.488530878512206e-07,
+        "significant": "True"
+      },
+      "flood_risk_score_lag1": {
+        "pearson_correlation": -0.04153213167720901,
+        "pearson_p_value": 0.2620891421789884,
+        "spearman_correlation": -0.038094276914796894,
+        "spearman_p_value": 0.303683581706696,
+        "significant": "False"
+      },
+      "flood_risk_score_lag3": {
+        "pearson_correlation": -0.11375767637972234,
+        "pearson_p_value": 0.0020671658303999213,
+        "spearman_correlation": -0.03756287259989061,
+        "spearman_p_value": 0.31048362759889536,
+        "significant": "True"
+      },
+      "aqi_estimated_7day_avg": {
+        "pearson_correlation": 0.36520971606643904,
+        "pearson_p_value": 1.7498912574495903e-24,
+        "spearman_correlation": 0.20469280879016688,
+        "spearman_p_value": 2.3499386916732785e-08,
+        "significant": "True"
+      },
+      "aqi_estimated_7day_std": {
+        "pearson_correlation": 0.30005643284300293,
+        "pearson_p_value": 1.1274845151205406e-16,
+        "spearman_correlation": -0.0014899311327799894,
+        "spearman_p_value": 0.967922221600142,
+        "significant": "True"
+      },
+      "flood_risk_score_7day_avg": {
+        "pearson_correlation": -0.1682470396232094,
+        "pearson_p_value": 4.790600341865537e-06,
+        "spearman_correlation": -0.4028204830821563,
+        "spearman_p_value": 6.836012771075893e-30,
+        "significant": "True"
+      },
+      "flood_risk_score_7day_std": {
+        "pearson_correlation": 0.1521741033058127,
+        "pearson_p_value": 3.605984059815063e-05,
+        "spearman_correlation": -0.003581868707505074,
+        "spearman_p_value": 0.922982424751478,
+        "significant": "True"
+      },
+      "flood_risk_level": {
+        "pearson_correlation": 0.1659923516285422,
+        "pearson_p_value": 6.4343056252423394e-06,
+        "spearman_correlation": -0.1394458002399471,
+        "spearman_p_value": 0.00015542359101895051,
+        "significant": "True"
+      }
+    },
+    "activity_color": {
+      "aod_550nm": {
+        "pearson_correlation": -0.5223305862708403,
+        "pearson_p_value": 2.076742877218302e-52,
+        "spearman_correlation": -0.6631614082878836,
+        "spearman_p_value": 8.392760141522787e-94,
+        "significant": "True"
+      },
+      "no2_column_density": {
+        "pearson_correlation": -0.14682147236379237,
+        "pearson_p_value": 6.764165593608153e-05,
+        "spearman_correlation": 0.19242187651142964,
+        "spearman_p_value": 1.5826197709979762e-07,
+        "significant": "True"
+      },
+      "aqi_estimated": {
+        "pearson_correlation": -0.24993515815362388,
+        "pearson_p_value": 7.130223891294269e-12,
+        "spearman_correlation": -0.4957214203684956,
+        "spearman_p_value": 1.3485737632910017e-46,
+        "significant": "True"
+      },
+      "aqi_color": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score": {
+        "pearson_correlation": 0.0009711082305525892,
+        "pearson_p_value": 0.9790890914534022,
+        "spearman_correlation": 0.0031010218342931,
+        "spearman_p_value": 0.9332956866176216,
+        "significant": "False"
+      },
+      "data_source_flood": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "heat_index_c": {
+        "pearson_correlation": 0.16579635114131813,
+        "pearson_p_value": 6.600224910267435e-06,
+        "spearman_correlation": 0.10745300753133692,
+        "spearman_p_value": 0.003629792781289539,
+        "significant": "True"
+      },
+      "heat_index_f": {
+        "pearson_correlation": 0.16579635114131816,
+        "pearson_p_value": 6.600224910267435e-06,
+        "spearman_correlation": 0.10745300753133692,
+        "spearman_p_value": 0.003629792781289539,
+        "significant": "True"
+      },
+      "heat_risk_level": {
+        "pearson_correlation": -0.10488128560010793,
+        "pearson_p_value": 0.004530393862039693,
+        "spearman_correlation": -0.12572772817292888,
+        "spearman_p_value": 0.000656780167474587,
+        "significant": "True"
+      },
+      "heat_risk_color": {
+        "pearson_correlation": 0.10488128560010793,
+        "pearson_p_value": 0.004530393862039693,
+        "spearman_correlation": 0.12572772817292888,
+        "spearman_p_value": 0.000656780167474587,
+        "significant": "True"
+      },
+      "air_quality_composite": {
+        "pearson_correlation": -0.5573082339351809,
+        "pearson_p_value": 7.03937042882154e-61,
+        "spearman_correlation": -0.4924952329495834,
+        "spearman_p_value": 6.315191683595147e-46,
+        "significant": "True"
+      },
+      "aqi_estimated_lag1": {
+        "pearson_correlation": -0.307778448446258,
+        "pearson_p_value": 1.6700817007136972e-17,
+        "spearman_correlation": 0.047363867622831506,
+        "spearman_p_value": 0.20086048319438993,
+        "significant": "True"
+      },
+      "aqi_estimated_lag3": {
+        "pearson_correlation": -0.3012393912878807,
+        "pearson_p_value": 8.446186795982729e-17,
+        "spearman_correlation": -0.15412423300557077,
+        "spearman_p_value": 2.8521959137646442e-05,
+        "significant": "True"
+      },
+      "flood_risk_score_lag1": {
+        "pearson_correlation": -0.15959580658459963,
+        "pearson_p_value": 1.4547736234629527e-05,
+        "spearman_correlation": 0.050728580919704384,
+        "spearman_p_value": 0.17066060069537883,
+        "significant": "True"
+      },
+      "flood_risk_score_lag3": {
+        "pearson_correlation": -0.22687686974540827,
+        "pearson_p_value": 5.48150756932507e-10,
+        "spearman_correlation": -0.05344164264593299,
+        "spearman_p_value": 0.14889058953422576,
+        "significant": "True"
+      },
+      "aqi_estimated_7day_avg": {
+        "pearson_correlation": -0.4312220313540273,
+        "pearson_p_value": 1.8408043693745372e-34,
+        "spearman_correlation": -0.4871539672787348,
+        "spearman_p_value": 7.850039088343733e-45,
+        "significant": "True"
+      },
+      "aqi_estimated_7day_std": {
+        "pearson_correlation": -0.45991667088762866,
+        "pearson_p_value": 1.5314160133263797e-39,
+        "spearman_correlation": -0.6754791865268986,
+        "spearman_p_value": 1.5370959202451877e-98,
+        "significant": "True"
+      },
+      "flood_risk_score_7day_avg": {
+        "pearson_correlation": -0.1997241694999981,
+        "pearson_p_value": 5.161303957036339e-08,
+        "spearman_correlation": -0.08880105198621523,
+        "spearman_p_value": 0.016325678424043553,
+        "significant": "True"
+      },
+      "flood_risk_score_7day_std": {
+        "pearson_correlation": -0.5888731525635028,
+        "pearson_p_value": 1.9521342133084105e-69,
+        "spearman_correlation": -0.6735778755436137,
+        "spearman_p_value": 8.568929396806566e-98,
+        "significant": "True"
+      },
+      "flood_risk_level": {
+        "pearson_correlation": -0.1970604178598158,
+        "pearson_p_value": 7.805645022244211e-08,
+        "spearman_correlation": -0.2653091401922145,
+        "spearman_p_value": 3.054721359570478e-13,
+        "significant": "True"
+      }
+    },
+    "economic_activity_index": {
+      "aod_550nm": {
+        "pearson_correlation": 0.9180862778844012,
+        "pearson_p_value": 3.3991660246346273e-295,
+        "spearman_correlation": 0.8335352237406648,
+        "spearman_p_value": 4.89975374915139e-190,
+        "significant": "True"
+      },
+      "no2_column_density": {
+        "pearson_correlation": -0.12286543743594786,
+        "pearson_p_value": 0.0008720548858172946,
+        "spearman_correlation": -0.1988476727377678,
+        "spearman_p_value": 5.917584515114818e-08,
+        "significant": "True"
+      },
+      "aqi_estimated": {
+        "pearson_correlation": 0.5238942961484421,
+        "pearson_p_value": 9.110688411547542e-53,
+        "spearman_correlation": 0.7413014860509202,
+        "spearman_p_value": 2.3009017260725549e-128,
+        "significant": "True"
+      },
+      "aqi_color": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score": {
+        "pearson_correlation": 0.06929444452090167,
+        "pearson_p_value": 0.061129198592052354,
+        "spearman_correlation": -0.06701005526456782,
+        "spearman_p_value": 0.07018936438491188,
+        "significant": "False"
+      },
+      "data_source_flood": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "heat_index_c": {
+        "pearson_correlation": -0.061363054613945436,
+        "pearson_p_value": 0.09735847350644569,
+        "spearman_correlation": -0.015280789053461348,
+        "spearman_p_value": 0.6799994190550309,
+        "significant": "False"
+      },
+      "heat_index_f": {
+        "pearson_correlation": -0.061363054613945436,
+        "pearson_p_value": 0.09735847350644569,
+        "spearman_correlation": -0.015280789053461348,
+        "spearman_p_value": 0.6799994190550309,
+        "significant": "False"
+      },
+      "heat_risk_level": {
+        "pearson_correlation": 0.07171123206778279,
+        "pearson_p_value": 0.052618951809237084,
+        "spearman_correlation": 0.06261956837076714,
+        "spearman_p_value": 0.09068235690261173,
+        "significant": "False"
+      },
+      "heat_risk_color": {
+        "pearson_correlation": -0.07171123206778279,
+        "pearson_p_value": 0.052618951809237084,
+        "spearman_correlation": -0.06261956837076714,
+        "spearman_p_value": 0.09068235690261173,
+        "significant": "False"
+      },
+      "air_quality_composite": {
+        "pearson_correlation": 0.7002034891731215,
+        "pearson_p_value": 8.819683939763627e-109,
+        "spearman_correlation": 0.541199063965731,
+        "spearman_p_value": 7.450969100405842e-57,
+        "significant": "True"
+      },
+      "aqi_estimated_lag1": {
+        "pearson_correlation": 0.2714255693428935,
+        "pearson_p_value": 8.22993503648497e-14,
+        "spearman_correlation": -0.10002650384685237,
+        "spearman_p_value": 0.006798014603183229,
+        "significant": "True"
+      },
+      "aqi_estimated_lag3": {
+        "pearson_correlation": 0.26970650000219343,
+        "pearson_p_value": 1.1938512504835497e-13,
+        "spearman_correlation": 0.18170202168294838,
+        "spearman_p_value": 7.594983750572812e-07,
+        "significant": "True"
+      },
+      "flood_risk_score_lag1": {
+        "pearson_correlation": -0.06403024743703578,
+        "pearson_p_value": 0.08363037664188283,
+        "spearman_correlation": -0.03790801707071265,
+        "spearman_p_value": 0.3060557038845245,
+        "significant": "False"
+      },
+      "flood_risk_score_lag3": {
+        "pearson_correlation": -0.05264216802848676,
+        "pearson_p_value": 0.15507353177184086,
+        "spearman_correlation": -0.03756206417586607,
+        "spearman_p_value": 0.31049404831236804,
+        "significant": "False"
+      },
+      "aqi_estimated_7day_avg": {
+        "pearson_correlation": 0.33748466717393033,
+        "pearson_p_value": 6.249677719073386e-21,
+        "spearman_correlation": 0.204690924984432,
+        "spearman_p_value": 2.3506486545832043e-08,
+        "significant": "True"
+      },
+      "aqi_estimated_7day_std": {
+        "pearson_correlation": 0.2536056355081624,
+        "pearson_p_value": 3.424855912044205e-12,
+        "spearman_correlation": -0.0014924020508761636,
+        "spearman_p_value": 0.9678690521446403,
+        "significant": "True"
+      },
+      "flood_risk_score_7day_avg": {
+        "pearson_correlation": -0.24126730752305126,
+        "pearson_p_value": 3.8465515884118885e-11,
+        "spearman_correlation": -0.40300726197731407,
+        "spearman_p_value": 6.399724281749675e-30,
+        "significant": "True"
+      },
+      "flood_risk_score_7day_std": {
+        "pearson_correlation": 0.06620195601132645,
+        "pearson_p_value": 0.07364660916083941,
+        "spearman_correlation": -0.003588631060772037,
+        "spearman_p_value": 0.9228374729827904,
+        "significant": "False"
+      },
+      "flood_risk_level": {
+        "pearson_correlation": 0.04762885230099473,
+        "pearson_p_value": 0.19834950310827607,
+        "spearman_correlation": -0.13964639620919747,
+        "spearman_p_value": 0.00015202722087144976,
+        "significant": "False"
+      }
+    },
+    "data_source_urban": {
+      "aod_550nm": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "no2_column_density": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "aqi_estimated": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "aqi_color": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "data_source_flood": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "heat_index_c": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "heat_index_f": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "heat_risk_level": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "heat_risk_color": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "air_quality_composite": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "aqi_estimated_lag1": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "aqi_estimated_lag3": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score_lag1": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score_lag3": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "aqi_estimated_7day_avg": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "aqi_estimated_7day_std": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score_7day_avg": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score_7day_std": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_level": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      }
+    },
+    "urban_environmental_load": {
+      "aod_550nm": {
+        "pearson_correlation": 0.6835205852245178,
+        "pearson_p_value": 9.279864625162476e-102,
+        "spearman_correlation": 0.8343925589135193,
+        "spearman_p_value": 8.837679786812042e-191,
+        "significant": "True"
+      },
+      "no2_column_density": {
+        "pearson_correlation": -0.05178163172521787,
+        "pearson_p_value": 0.16194406047134036,
+        "spearman_correlation": -0.3953805506724778,
+        "spearman_p_value": 9.140490717284885e-29,
+        "significant": "False"
+      },
+      "aqi_estimated": {
+        "pearson_correlation": 0.9987433837954636,
+        "pearson_p_value": 0.0,
+        "spearman_correlation": 0.9355497631829884,
+        "spearman_p_value": 0.0,
+        "significant": "True"
+      },
+      "aqi_color": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "flood_risk_score": {
+        "pearson_correlation": 0.47262095516492986,
+        "pearson_p_value": 5.981627137653493e-42,
+        "spearman_correlation": -0.0010949303011073938,
+        "spearman_p_value": 0.9764235570780192,
+        "significant": "True"
+      },
+      "data_source_flood": {
+        "pearson_correlation": NaN,
+        "pearson_p_value": NaN,
+        "spearman_correlation": NaN,
+        "spearman_p_value": NaN,
+        "significant": "False"
+      },
+      "heat_index_c": {
+        "pearson_correlation": -0.009935105607964907,
+        "pearson_p_value": 0.7885742436053573,
+        "spearman_correlation": -0.010448774465135665,
+        "spearman_p_value": 0.7779221339563047,
+        "significant": "False"
+      },
+      "heat_index_f": {
+        "pearson_correlation": -0.009935105607964909,
+        "pearson_p_value": 0.7885742436053573,
+        "spearman_correlation": -0.010448774465135665,
+        "spearman_p_value": 0.7779221339563047,
+        "significant": "False"
+      },
+      "heat_risk_level": {
+        "pearson_correlation": 0.05745290919616941,
+        "pearson_p_value": 0.12066730654859593,
+        "spearman_correlation": 0.04603665183281723,
+        "spearman_p_value": 0.213785815476414,
+        "significant": "False"
+      },
+      "heat_risk_color": {
+        "pearson_correlation": -0.05745290919616941,
+        "pearson_p_value": 0.12066730654859593,
+        "spearman_correlation": -0.04603665183281723,
+        "spearman_p_value": 0.213785815476414,
+        "significant": "False"
+      },
+      "air_quality_composite": {
+        "pearson_correlation": 0.5501037437548844,
+        "pearson_p_value": 4.7269971852560125e-59,
+        "spearman_correlation": 0.34503781062442135,
+        "spearman_p_value": 7.2913573673352425e-22,
+        "significant": "True"
+      },
+      "aqi_estimated_lag1": {
+        "pearson_correlation": 0.032552244162331614,
+        "pearson_p_value": 0.3794868692679938,
+        "spearman_correlation": -0.2985520446353081,
+        "spearman_p_value": 1.624852720141737e-16,
+        "significant": "False"
+      },
+      "aqi_estimated_lag3": {
+        "pearson_correlation": 0.15824804121640693,
+        "pearson_p_value": 1.7207840609880762e-05,
+        "spearman_correlation": 0.24988166601066852,
+        "spearman_p_value": 7.20620671377664e-12,
+        "significant": "True"
+      },
+      "flood_risk_score_lag1": {
+        "pearson_correlation": -0.023292053949270166,
+        "pearson_p_value": 0.5295093809969752,
+        "spearman_correlation": -0.23867616314657233,
+        "spearman_p_value": 6.28712572989049e-11,
+        "significant": "False"
+      },
+      "flood_risk_score_lag3": {
+        "pearson_correlation": -0.16730797045646684,
+        "pearson_p_value": 5.4194251798554365e-06,
+        "spearman_correlation": -0.10516627773703889,
+        "spearman_p_value": 0.004421485924394726,
+        "significant": "True"
+      },
+      "aqi_estimated_7day_avg": {
+        "pearson_correlation": 0.4249974235456433,
+        "pearson_p_value": 2.0149159925973904e-33,
+        "spearman_correlation": 0.13925350531708838,
+        "spearman_p_value": 0.00015874621106405377,
+        "significant": "True"
+      },
+      "aqi_estimated_7day_std": {
+        "pearson_correlation": 0.39504543391503527,
+        "pearson_p_value": 1.0257101681315078e-28,
+        "spearman_correlation": -0.06875943112169568,
+        "spearman_p_value": 0.06315942279534352,
+        "significant": "True"
+      },
+      "flood_risk_score_7day_avg": {
+        "pearson_correlation": 0.10486343372711363,
+        "pearson_p_value": 0.004537295880822151,
+        "spearman_correlation": -0.3375661426571645,
+        "spearman_p_value": 6.108424976621875e-21,
+        "significant": "True"
+      },
+      "flood_risk_score_7day_std": {
+        "pearson_correlation": 0.29280664963086867,
+        "pearson_p_value": 6.432467717626477e-16,
+        "spearman_correlation": -0.07140879402857563,
+        "spearman_p_value": 0.05362660624186534,
+        "significant": "True"
+      },
+      "flood_risk_level": {
+        "pearson_correlation": 0.4167440194100727,
+        "pearson_p_value": 4.458259096382761e-32,
+        "spearman_correlation": -0.04629187746798297,
+        "spearman_p_value": 0.21125485062128724,
+        "significant": "True"
+      }
+    }
+  },
+  "feature_importance": {
+    "aod_550nm": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "no2_column_density": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "aqi_estimated": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "aqi_color": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "flood_risk_score": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "data_source_flood": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "heat_index_c": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": -4.796274303743752e-27,
+        "activity_color": 0.0,
+        "economic_activity_index": 9.592548607487504e-27,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 1.5348077771980006e-25
+      }
+    },
+    "heat_index_f": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 1.25208002876679e-26,
+        "activity_color": 0.0,
+        "economic_activity_index": -2.50416005753358e-26,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": -4.006656092053728e-25
+      }
+    },
+    "aqi_estimated_lag1": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "aqi_estimated_lag3": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "flood_risk_score_lag1": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "flood_risk_score_lag3": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "aqi_estimated_7day_avg": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "aqi_estimated_7day_std": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "flood_risk_score_7day_avg": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "flood_risk_score_7day_std": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "aqi_risk_level": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    },
+    "flood_risk_level": {
+      "method": "linear_coefficients",
+      "coefficients": {
+        "radiance_nw_cm2_sr": 0.0,
+        "activity_color": 0.0,
+        "economic_activity_index": 0.0,
+        "data_source_urban": 0.0,
+        "urban_environmental_load": 0.0
+      }
+    }
+  },
+  "policy_insights": {
+    "key_findings": [
+      "Higher radiance_nw_cm2_sr is associated with increased aod_550nm",
+      "Higher radiance_nw_cm2_sr is associated with increased aqi_estimated",
+      "Higher radiance_nw_cm2_sr is associated with increased air_quality_composite",
+      "Higher radiance_nw_cm2_sr is associated with increased aqi_estimated_7day_avg",
+      "Higher radiance_nw_cm2_sr is associated with increased aqi_estimated_7day_std",
+      "Higher activity_color is associated with decreased aod_550nm",
+      "Higher activity_color is associated with decreased air_quality_composite",
+      "Higher activity_color is associated with decreased aqi_estimated_lag1",
+      "Higher activity_color is associated with decreased aqi_estimated_lag3",
+      "Higher activity_color is associated with decreased aqi_estimated_7day_avg",
+      "Higher activity_color is associated with decreased aqi_estimated_7day_std",
+      "Higher activity_color is associated with decreased flood_risk_score_7day_std",
+      "Higher economic_activity_index is associated with increased aod_550nm",
+      "Higher economic_activity_index is associated with increased aqi_estimated",
+      "Higher economic_activity_index is associated with increased air_quality_composite",
+      "Higher economic_activity_index is associated with increased aqi_estimated_7day_avg",
+      "Higher urban_environmental_load is associated with increased aod_550nm",
+      "Higher urban_environmental_load is associated with increased aqi_estimated",
+      "Higher urban_environmental_load is associated with increased flood_risk_score",
+      "Higher urban_environmental_load is associated with increased air_quality_composite",
+      "Higher urban_environmental_load is associated with increased aqi_estimated_7day_avg",
+      "Higher urban_environmental_load is associated with increased aqi_estimated_7day_std",
+      "Higher urban_environmental_load is associated with increased flood_risk_level"
+    ],
+    "policy_recommendations": [
+      "Consider policies to manage radiance_nw_cm2_sr to reduce aod_550nm",
+      "Consider policies to manage radiance_nw_cm2_sr to reduce aqi_estimated",
+      "Consider policies to manage radiance_nw_cm2_sr to reduce air_quality_composite",
+      "Consider policies to manage radiance_nw_cm2_sr to reduce aqi_estimated_7day_avg",
+      "Consider policies to manage radiance_nw_cm2_sr to reduce aqi_estimated_7day_std",
+      "Leverage activity_color as a potential solution for aod_550nm",
+      "Leverage activity_color as a potential solution for air_quality_composite",
+      "Leverage activity_color as a potential solution for aqi_estimated_lag1",
+      "Leverage activity_color as a potential solution for aqi_estimated_lag3",
+      "Leverage activity_color as a potential solution for aqi_estimated_7day_avg",
+      "Leverage activity_color as a potential solution for aqi_estimated_7day_std",
+      "Leverage activity_color as a potential solution for flood_risk_score_7day_std",
+      "Consider policies to manage economic_activity_index to reduce aod_550nm",
+      "Consider policies to manage economic_activity_index to reduce aqi_estimated",
+      "Consider policies to manage economic_activity_index to reduce air_quality_composite",
+      "Consider policies to manage economic_activity_index to reduce aqi_estimated_7day_avg",
+      "Consider policies to manage urban_environmental_load to reduce aod_550nm",
+      "Consider policies to manage urban_environmental_load to reduce aqi_estimated",
+      "Consider policies to manage urban_environmental_load to reduce flood_risk_score",
+      "Consider policies to manage urban_environmental_load to reduce air_quality_composite",
+      "Consider policies to manage urban_environmental_load to reduce aqi_estimated_7day_avg",
+      "Consider policies to manage urban_environmental_load to reduce aqi_estimated_7day_std",
+      "Consider policies to manage urban_environmental_load to reduce flood_risk_level"
+    ],
+    "urban_environmental_relationships": {},
+    "seasonal_patterns": {
+      "radiance_nw_cm2_sr": {
+        "1": 29.45,
+        "2": 29.45,
+        "3": 29.45,
+        "4": 29.45,
+        "5": 29.45,
+        "6": 29.45,
+        "7": 29.45,
+        "8": 29.45,
+        "9": 30.4755,
+        "10": 29.39532258064516,
+        "11": 29.45,
+        "12": 29.45
+      },
+      "activity_color": {
+        "1": 2.0,
+        "2": 2.0,
+        "3": 2.0,
+        "4": 2.0,
+        "5": 2.0,
+        "6": 2.0,
+        "7": 2.0,
+        "8": 2.0,
+        "9": 1.5833333333333333,
+        "10": 2.0,
+        "11": 2.0,
+        "12": 2.0
+      },
+      "economic_activity_index": {
+        "1": 61.85,
+        "2": 61.85,
+        "3": 61.85,
+        "4": 61.85,
+        "5": 61.85,
+        "6": 61.85,
+        "7": 61.85,
+        "8": 61.85,
+        "9": 62.92166666666667,
+        "10": 61.73548387096774,
+        "11": 61.85,
+        "12": 61.85
+      },
+      "data_source_urban": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.0,
+        "9": 0.0,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.0
+      },
+      "urban_environmental_load": {
+        "1": 971.85,
+        "2": 971.85,
+        "3": 971.85,
+        "4": 971.85,
+        "5": 971.85,
+        "6": 971.85,
+        "7": 971.85,
+        "8": 971.85,
+        "9": 1639.827,
+        "10": 968.0009677419355,
+        "11": 971.85,
+        "12": 971.85
+      },
+      "aod_550nm": {
+        "1": 0.527,
+        "2": 0.527,
+        "3": 0.527,
+        "4": 0.527,
+        "5": 0.527,
+        "6": 0.527,
+        "7": 0.527,
+        "8": 0.527,
+        "9": 0.5781333333333334,
+        "10": 0.5250322580645161,
+        "11": 0.527,
+        "12": 0.527
+      },
+      "no2_column_density": {
+        "1": 0.3727963411861317,
+        "2": 0.3727963411861317,
+        "3": 0.3727963411861317,
+        "4": 0.3727963411861317,
+        "5": 0.3727963411861317,
+        "6": 0.3727963411861317,
+        "7": 0.3727963411861317,
+        "8": 0.3727963411861317,
+        "9": 0.3926993678337089,
+        "10": 0.37299296974851737,
+        "11": 0.3727963411861317,
+        "12": 0.3727963411861317
+      },
+      "aqi_estimated": {
+        "1": 33.0,
+        "2": 33.0,
+        "3": 33.0,
+        "4": 33.0,
+        "5": 33.0,
+        "6": 33.0,
+        "7": 33.0,
+        "8": 33.0,
+        "9": 42.6,
+        "10": 32.91935483870968,
+        "11": 33.0,
+        "12": 33.0
+      },
+      "aqi_color": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.0,
+        "9": 0.0,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.0
+      },
+      "flood_risk_score": {
+        "1": 32.5,
+        "2": 32.5,
+        "3": 32.5,
+        "4": 32.5,
+        "5": 32.5,
+        "6": 32.5,
+        "7": 32.5,
+        "8": 32.5,
+        "9": 34.083333333333336,
+        "10": 32.41935483870968,
+        "11": 32.5,
+        "12": 32.5
+      },
+      "data_source_flood": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.0,
+        "9": 0.0,
+        "10": 0.0,
+        "11": 0.0,
+        "12": 0.0
+      },
+      "heat_index_c": {
+        "1": 23.69808803425192,
+        "2": 26.386411943603246,
+        "3": 29.34556817155178,
+        "4": 33.97688181228924,
+        "5": 35.943747642997344,
+        "6": 34.05554441756454,
+        "7": 30.25462118999109,
+        "8": 29.170859057246663,
+        "9": 8.554537082162767,
+        "10": -7.66579520209032,
+        "11": 25.00862968307131,
+        "12": 23.81797219622505
+      },
+      "heat_index_f": {
+        "1": 74.65655846165346,
+        "2": 79.49554149848585,
+        "3": 84.8220227087932,
+        "4": 93.15838726212063,
+        "5": 96.69874575739522,
+        "6": 93.29997995161618,
+        "7": 86.45831814198397,
+        "8": 84.507546303044,
+        "9": 47.39816674789298,
+        "10": 18.20156863623742,
+        "11": 77.01553342952836,
+        "12": 74.8723499532051
+      },
+      "heat_risk_level": {
+        "1": 2.9516129032258065,
+        "2": 1.5263157894736843,
+        "3": 0.5645161290322581,
+        "4": 1.7,
+        "5": 1.8225806451612903,
+        "6": 1.5666666666666667,
+        "7": 0.25806451612903225,
+        "8": 0.2903225806451613,
+        "9": 1.25,
+        "10": 0.7903225806451613,
+        "11": 2.55,
+        "12": 2.7580645161290325
+      },
+      "heat_risk_color": {
+        "1": 0.04838709677419355,
+        "2": 1.4736842105263157,
+        "3": 2.435483870967742,
+        "4": 1.3,
+        "5": 1.1774193548387097,
+        "6": 1.4333333333333333,
+        "7": 2.7419354838709675,
+        "8": 2.7096774193548385,
+        "9": 1.75,
+        "10": 2.2096774193548385,
+        "11": 0.45,
+        "12": 0.24193548387096775
+      },
+      "air_quality_composite": {
+        "1": 0.1964636718050914,
+        "2": 0.1964636718050914,
+        "3": 0.1964636718050914,
+        "4": 0.19646367180509142,
+        "5": 0.1964636718050914,
+        "6": 0.19646367180509142,
+        "7": 0.1964636718050914,
+        "8": 0.1964636718050914,
+        "9": 0.22138589430020084,
+        "10": 0.19595575319234862,
+        "11": 0.19646367180509142,
+        "12": 0.1964636718050914
+      },
+      "aqi_estimated_lag1": {
+        "1": 33.0,
+        "2": 33.0,
+        "3": 33.0,
+        "4": 33.0,
+        "5": 33.0,
+        "6": 33.0,
+        "7": 33.0,
+        "8": 33.0,
+        "9": 42.36666666666667,
+        "10": 33.12903225806452,
+        "11": 33.0,
+        "12": 33.0
+      },
+      "aqi_estimated_lag3": {
+        "1": 33.0,
+        "2": 33.0,
+        "3": 33.0,
+        "4": 33.0,
+        "5": 33.0,
+        "6": 33.0,
+        "7": 33.0,
+        "8": 33.0,
+        "9": 42.45,
+        "10": 32.91935483870968,
+        "11": 33.0,
+        "12": 33.0
+      },
+      "flood_risk_score_lag1": {
+        "1": 32.5,
+        "2": 32.5,
+        "3": 32.5,
+        "4": 32.5,
+        "5": 32.5,
+        "6": 32.5,
+        "7": 32.5,
+        "8": 32.5,
+        "9": 34.458333333333336,
+        "10": 32.25806451612903,
+        "11": 32.5,
+        "12": 32.5
+      },
+      "flood_risk_score_lag3": {
+        "1": 32.5,
+        "2": 32.5,
+        "3": 32.5,
+        "4": 32.5,
+        "5": 32.5,
+        "6": 32.5,
+        "7": 32.5,
+        "8": 32.5,
+        "9": 34.375,
+        "10": 32.58064516129032,
+        "11": 32.5,
+        "12": 32.5
+      },
+      "aqi_estimated_7day_avg": {
+        "1": 33.0,
+        "2": 33.0,
+        "3": 33.0,
+        "4": 33.0,
+        "5": 33.0,
+        "6": 33.0,
+        "7": 33.0,
+        "8": 33.0,
+        "9": 42.580952380952375,
+        "10": 32.93087557603687,
+        "11": 33.0,
+        "12": 33.0
+      },
+      "aqi_estimated_7day_std": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.0,
+        "9": 26.66799731746652,
+        "10": 0.3821730066910736,
+        "11": 0.0,
+        "12": 0.0
+      },
+      "flood_risk_score_7day_avg": {
+        "1": 32.5,
+        "2": 32.5,
+        "3": 32.5,
+        "4": 32.5,
+        "5": 32.5,
+        "6": 32.5,
+        "7": 32.5,
+        "8": 32.5,
+        "9": 34.351190476190474,
+        "10": 32.44239631336406,
+        "11": 32.5,
+        "12": 32.5
+      },
+      "flood_risk_score_7day_std": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0,
+        "7": 0.0,
+        "8": 0.0,
+        "9": 6.905240655238127,
+        "10": 0.37461472721059935,
+        "11": 0.0,
+        "12": 0.0
+      },
+      "aqi_risk_level": {
+        "1": NaN,
+        "2": NaN,
+        "3": NaN,
+        "4": NaN,
+        "5": NaN,
+        "6": NaN,
+        "7": NaN,
+        "8": NaN,
+        "9": NaN,
+        "10": NaN,
+        "11": NaN,
+        "12": NaN
+      },
+      "flood_risk_level": {
+        "1": 2.0,
+        "2": 2.0,
+        "3": 2.0,
+        "4": 2.0,
+        "5": 2.0,
+        "6": 2.0,
+        "7": 2.0,
+        "8": 2.0,
+        "9": 2.216666666666667,
+        "10": 2.0161290322580645,
+        "11": 2.0,
+        "12": 2.0
+      }
+    }
+  },
+  "model_performance": {
+    "aod_550nm": {
+      "best_algorithm": "linear",
+      "test_rmse": 0.16686961792895405,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "no2_column_density": {
+      "best_algorithm": "linear",
+      "test_rmse": 0.08604515400036337,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "aqi_estimated": {
+      "best_algorithm": "linear",
+      "test_rmse": 39.507770698664224,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "aqi_color": {
+      "best_algorithm": "linear",
+      "test_rmse": 0.0,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "flood_risk_score": {
+      "best_algorithm": "linear",
+      "test_rmse": 7.231591689755923,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "data_source_flood": {
+      "best_algorithm": "linear",
+      "test_rmse": 0.0,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "heat_index_c": {
+      "best_algorithm": "ridge",
+      "test_rmse": 165.4296065201668,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "heat_index_f": {
+      "best_algorithm": "ridge",
+      "test_rmse": 297.7732917363003,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "heat_risk_level": {
+      "best_algorithm": "polynomial",
+      "test_rmse": 1.3374187677351757,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "heat_risk_color": {
+      "best_algorithm": "polynomial",
+      "test_rmse": 1.3374187677351757,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "air_quality_composite": {
+      "best_algorithm": "polynomial",
+      "test_rmse": 0.06671814213685034,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "aqi_estimated_lag1": {
+      "best_algorithm": "linear",
+      "test_rmse": 39.50768460511376,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "aqi_estimated_lag3": {
+      "best_algorithm": "linear",
+      "test_rmse": 39.48770582807548,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "flood_risk_score_lag1": {
+      "best_algorithm": "linear",
+      "test_rmse": 7.157722626455911,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "flood_risk_score_lag3": {
+      "best_algorithm": "linear",
+      "test_rmse": 6.885235114724407,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "aqi_estimated_7day_avg": {
+      "best_algorithm": "linear",
+      "test_rmse": 16.840894147105868,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "aqi_estimated_7day_std": {
+      "best_algorithm": "linear",
+      "test_rmse": 38.57477099820527,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "flood_risk_score_7day_avg": {
+      "best_algorithm": "linear",
+      "test_rmse": 2.6626918349403175,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "flood_risk_score_7day_std": {
+      "best_algorithm": "linear",
+      "test_rmse": 6.993332934971609,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "aqi_risk_level": {
+      "best_algorithm": "linear",
+      "test_rmse": 0.0,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    },
+    "flood_risk_level": {
+      "best_algorithm": "linear",
+      "test_rmse": 0.40406101782088427,
+      "features": [
+        "radiance_nw_cm2_sr",
+        "activity_color",
+        "economic_activity_index",
+        "data_source_urban",
+        "urban_environmental_load"
+      ]
+    }
+  },
+  "analysis_timestamp": "2025-10-02T22:36:40.056425"
+}

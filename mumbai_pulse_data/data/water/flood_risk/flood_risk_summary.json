@@ -1,0 +1,18 @@
+{
+  "date_range": "2025-09-03 to 2025-10-02",
+  "total_days": 30,
+  "average_risk_score": 35.5,
+  "max_risk_score": 75,
+  "high_risk_days": 3,
+  "monsoon_days": 28,
+  "data_sources": [
+    "SMAP_soil_moisture",
+    "NASA_POWER_precipitation"
+  ],
+  "category_distribution": {
+    "Moderate Risk": 15,
+    "High Risk": 10,
+    "Very High Risk": 3,
+    "Low Risk": 2
+  }
+}

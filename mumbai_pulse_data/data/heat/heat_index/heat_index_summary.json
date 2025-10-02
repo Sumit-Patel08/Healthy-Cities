@@ -1,0 +1,23 @@
+{
+  "total_days": 731,
+  "date_range": {
+    "start": "2023-10-03",
+    "end": "2025-10-02"
+  },
+  "heat_index_stats": {
+    "min_c": -1128.9294444444445,
+    "max_c": 41.86584079806955,
+    "mean_c": 24.354028519947217,
+    "min_f": -2000.0729999999999,
+    "max_f": 107.35851343652519,
+    "mean_f": 75.837251335905
+  },
+  "risk_distribution": {
+    "Caution": 305,
+    "Low Risk": 245,
+    "Extreme Caution": 180,
+    "Danger": 1
+  },
+  "extreme_heat_days": 1,
+  "generated_at": "2025-10-02T16:26:29.661279"
+}

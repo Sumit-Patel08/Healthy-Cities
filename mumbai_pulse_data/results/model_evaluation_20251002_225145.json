@@ -1,0 +1,137 @@
+{
+  "evaluation_timestamp": "2025-10-02T22:51:45.173426",
+  "models_evaluated": 5,
+  "successful_evaluations": 5,
+  "failed_evaluations": 0,
+  "detailed_results": {
+    "environmental_health_predictor": {
+      "model_type": "regression",
+      "metrics": {
+        "rmse": 7.388372304890943,
+        "mae": 1.5869874719071018,
+        "r2": -0.013788075977819503,
+        "mean_prediction": 80.3499984741211,
+        "std_prediction": 0.0,
+        "prediction_range": [
+          80.3499984741211,
+          80.3499984741211
+        ]
+      },
+      "status": "success"
+    },
+    "multi_output_risk_classifier": {
+      "model_type": "multi_classification",
+      "metrics": {
+        "aqi_risk": {
+          "accuracy": 0.3356164383561644,
+          "precision": 0.1126383936948771,
+          "recall": 0.3356164383561644,
+          "f1_score": 0.16866877414822617
+        },
+        "flood_risk": {
+          "accuracy": 0.3013698630136986,
+          "precision": 0.09082379433289547,
+          "recall": 0.3013698630136986,
+          "f1_score": 0.13958183129055515
+        },
+        "heat_risk": {
+          "accuracy": 0.23972602739726026,
+          "precision": 0.22129806976789335,
+          "recall": 0.23972602739726026,
+          "f1_score": 0.21438260565067152
+        },
+        "overall": {
+          "average_accuracy": 0.2922374429223744,
+          "average_f1": 0.17421107036315098
+        }
+      },
+      "status": "success"
+    },
+    "time_series_forecaster": {
+      "model_type": "time_series",
+      "metrics": {
+        "aqi_estimated": {
+          "rmse": 29.64982461584649,
+          "mae": 24.24096395172237,
+          "mape": 54.25927232202654,
+          "directional_accuracy": 0.48484848484848486
+        },
+        "flood_risk_score": {
+          "rmse": 28.247298301748835,
+          "mae": 25.07037884186673,
+          "mape": Infinity,
+          "directional_accuracy": 0.5555555555555556
+        },
+        "overall": {
+          "average_rmse": 28.948561458797663,
+          "average_mae": 24.655671396794553,
+          "average_mape": Infinity,
+          "average_directional_accuracy": 0.5202020202020202
+        }
+      },
+      "models_evaluated": 2,
+      "status": "success"
+    },
+    "anomaly_detection_system": {
+      "model_type": "anomaly_detection",
+      "metrics": {
+        "accuracy": 0.1,
+        "precision": 0.1,
+        "recall": 1.0,
+        "f1_score": 0.18181818181818182,
+        "detection_rate": 1.0,
+        "anomalies_detected": 1000,
+        "total_samples": 1000
+      },
+      "status": "success"
+    },
+    "urban_environmental_impact": {
+      "model_type": "multi_regression",
+      "metrics": {
+        "models_evaluated": 2,
+        "total_models_available": 21,
+        "average_rmse": 42.02913920127685,
+        "average_mae": 38.83069311342215,
+        "average_r2": -6.89107576654421,
+        "individual_results": [
+          {
+            "model_name": "aod_550nm",
+            "rmse": 26.552605628176785,
+            "mae": 25.157356106820142,
+            "r2": -8.772106506992088
+          },
+          {
+            "model_name": "aqi_color",
+            "rmse": 57.50567277437691,
+            "mae": 52.50403012002416,
+            "r2": -5.010045026096332
+          }
+        ]
+      },
+      "status": "success"
+    }
+  },
+  "summary_metrics": {
+    "environmental_health_predictor": {
+      "r2_score": -0.013788075977819503,
+      "rmse": 7.388372304890943
+    },
+    "multi_output_risk_classifier": {
+      "average_accuracy": 0.2922374429223744,
+      "average_f1": 0.17421107036315098
+    },
+    "time_series_forecaster": {
+      "average_rmse": 28.948561458797663,
+      "average_directional_accuracy": 0.5202020202020202
+    },
+    "anomaly_detection_system": {
+      "f1_score": 0.18181818181818182,
+      "detection_rate": 1.0
+    },
+    "urban_environmental_impact": {
+      "average_r2": -6.89107576654421,
+      "average_rmse": 42.02913920127685,
+      "models_evaluated": 2
+    }
+  }
+}

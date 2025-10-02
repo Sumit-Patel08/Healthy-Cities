@@ -1,0 +1,17 @@
+{
+  "date_range": "2025-09-03 to 2025-10-02",
+  "total_days": 30,
+  "average_radiance": 31.39,
+  "weekend_vs_weekday": {
+    "weekend_avg": 28.46,
+    "weekday_avg": 32.45
+  },
+  "activity_distribution": {
+    "Moderate": 16,
+    "High": 11,
+    "Very High": 3
+  },
+  "anomalies_detected": 2,
+  "economic_activity_index": 63.8,
+  "data_source": "Real VIIRS nighttime lights satellite data"
+}

@@ -1,0 +1,19 @@
+{
+  "date_range": "2025-09-03 to 2025-10-02",
+  "total_days": 30,
+  "average_aqi": 52.0,
+  "average_pm25": 23.6,
+  "max_aqi": 500,
+  "unhealthy_days": 1,
+  "data_sources": [
+    "MODIS_AOD",
+    "OMI_NO2",
+    "NASA_POWER"
+  ],
+  "enhancement": "Multi-sensor fusion with OMI NO2 correction",
+  "category_distribution": {
+    "('Good', 'green')": 24,
+    "('Satisfactory', 'lightgreen')": 5,
+    "('Severe', 'maroon')": 1
+  }
+}

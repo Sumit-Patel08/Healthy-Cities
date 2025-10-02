@@ -1,0 +1,102 @@
+{
+  "feature_names": [
+    "aod_550nm",
+    "no2_column_density",
+    "humidity_percent",
+    "pm25_estimated",
+    "aqi_estimated",
+    "aqi_color",
+    "soil_moisture",
+    "precipitation_mm",
+    "ndwi",
+    "flood_risk_score",
+    "risk_color",
+    "is_monsoon_season",
+    "data_source_flood",
+    "day_of_week",
+    "is_weekend",
+    "radiance_nw_cm2_sr",
+    "activity_color",
+    "economic_activity_index",
+    "data_source_urban",
+    "T2M",
+    "RH2M",
+    "heat_index_c",
+    "heat_index_f",
+    "heat_risk_level",
+    "heat_risk_color",
+    "T2M_power",
+    "T2M_MAX",
+    "T2M_MIN",
+    "RH2M_power",
+    "WS10M",
+    "PRECTOTCORR",
+    "day_of_year",
+    "month",
+    "is_monsoon",
+    "season",
+    "environmental_stress_index",
+    "air_quality_composite",
+    "water_stress_index",
+    "urban_environmental_load",
+    "aqi_estimated_lag1",
+    "aqi_estimated_lag3",
+    "flood_risk_score_lag1",
+    "flood_risk_score_lag3",
+    "aqi_estimated_7day_avg",
+    "aqi_estimated_7day_std",
+    "flood_risk_score_7day_avg",
+    "flood_risk_score_7day_std",
+    "environmental_stress_index_7day_avg",
+    "environmental_stress_index_7day_std",
+    "aqi_risk_level",
+    "flood_risk_level"
+  ],
+  "n_features": 51,
+  "n_samples": 731,
+  "date_range": {
+    "start": "2023-10-03",
+    "end": "2025-10-02"
+  },
+  "processing_timestamp": "2025-10-02T22:20:34.334151",
+  "label_encoders": {
+    "aqi_color": [
+      "gray"
+    ],
+    "risk_color": [
+      "green",
+      "orange",
+      "red",
+      "yellow"
+    ],
+    "data_source_flood": [
+      "real_smap_satellite_data"
+    ],
+    "activity_color": [
+      "orange",
+      "red",
+      "yellow"
+    ],
+    "data_source_urban": [
+      "real_viirs_satellite_data"
+    ],
+    "heat_risk_level": [
+      "Caution",
+      "Danger",
+      "Extreme Caution",
+      "Low Risk"
+    ],
+    "heat_risk_color": [
+      "green",
+      "orange",
+      "red",
+      "yellow"
+    ],
+    "season": [
+      "monsoon",
+      "post_monsoon",
+      "spring",
+      "winter"
+    ]
+  }
+}

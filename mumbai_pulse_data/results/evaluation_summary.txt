@@ -1,0 +1,31 @@
+MUMBAI PULSE - MODEL EVALUATION SUMMARY
+==================================================
+
+Evaluation Date: 2025-10-02 22:52:53
+Models Evaluated: 5
+Successful: 5
+Failed: 0
+
+MODEL PERFORMANCE SUMMARY:
+------------------------------
+
+Environmental Health Predictor:
+  r2_score: -0.014
+  rmse: 7.388
+
+Multi Output Risk Classifier:
+  average_accuracy: 0.292
+  average_f1: 0.174
+
+Time Series Forecaster:
+  average_rmse: 28.949
+  average_directional_accuracy: 0.520
+
+Anomaly Detection System:
+  f1_score: 0.182
+  detection_rate: 1.000
+
+Urban Environmental Impact:
+  average_r2: -6.891
+  average_rmse: 42.029
+  models_evaluated: 2.000
