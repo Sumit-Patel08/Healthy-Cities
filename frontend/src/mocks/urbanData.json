@@ -1,0 +1,104 @@
+{
+  "nighttime_lights_intensity": 85.6,
+  "urban_activity_index": 0.78,
+  "population_density_estimate": 29650,
+  "economic_activity_score": 8.2,
+  "infrastructure_development": 0.85,
+  "energy_consumption_estimate": 145.8,
+  "activity_zones": [
+    {
+      "location": "Bandra Kurla Complex",
+      "coordinates": [72.8697, 19.0596],
+      "activity_level": "Very High",
+      "lights_intensity": 95.2,
+      "zone_type": "Commercial"
+    },
+    {
+      "location": "Lower Parel",
+      "coordinates": [72.8311, 18.9989],
+      "activity_level": "High",
+      "lights_intensity": 88.7,
+      "zone_type": "Mixed Use"
+    },
+    {
+      "location": "Andheri East",
+      "coordinates": [72.8697, 19.1197],
+      "activity_level": "High",
+      "lights_intensity": 82.4,
+      "zone_type": "Residential/Commercial"
+    }
+  ],
+  "time_series": [
+    { "timestamp": "2024-01-01T00:00:00Z", "lights_intensity": 45.2, "activity_index": 0.35 },
+    { "timestamp": "2024-01-01T03:00:00Z", "lights_intensity": 25.8, "activity_index": 0.18 },
+    { "timestamp": "2024-01-01T06:00:00Z", "lights_intensity": 52.1, "activity_index": 0.42 },
+    { "timestamp": "2024-01-01T09:00:00Z", "lights_intensity": 78.9, "activity_index": 0.68 },
+    { "timestamp": "2024-01-01T12:00:00Z", "lights_intensity": 85.6, "activity_index": 0.78 },
+    { "timestamp": "2024-01-01T15:00:00Z", "lights_intensity": 89.2, "activity_index": 0.82 },
+    { "timestamp": "2024-01-01T18:00:00Z", "lights_intensity": 92.5, "activity_index": 0.89 },
+    { "timestamp": "2024-01-01T21:00:00Z", "lights_intensity": 88.1, "activity_index": 0.85 }
+  ],
+  "viirs_data": {
+    "current_radiance": 85.6,
+    "description": "VIIRS Day/Night Band nighttime lights",
+    "cloud_free_observations": 28,
+    "data_quality": "High",
+    "geotiff_url": "/data/viirs_mumbai_latest.tif"
+  },
+  "urban_expansion": {
+    "built_up_area": 603.4,
+    "change_from_2020": "+8.7%",
+    "expansion_rate": "2.9% annually",
+    "new_developments": 45
+  },
+  "transportation_activity": {
+    "traffic_density": 0.82,
+    "public_transport_usage": 0.75,
+    "road_network_utilization": 0.88,
+    "congestion_index": 0.71
+  },
+  "economic_indicators": {
+    "gdp_contribution": 12.5,
+    "employment_rate": 0.78,
+    "business_establishments": 125000,
+    "industrial_activity": 0.85
+  },
+  "infrastructure_metrics": {
+    "electricity_access": 0.98,
+    "water_supply_coverage": 0.89,
+    "sewerage_coverage": 0.76,
+    "road_density": 15.2
+  },
+  "development_projects": [
+    {
+      "name": "Mumbai Metro Line 3",
+      "status": "Under Construction",
+      "completion": "2024-12-31",
+      "impact_score": 9.2
+    },
+    {
+      "name": "Coastal Road Project",
+      "status": "In Progress",
+      "completion": "2025-06-30",
+      "impact_score": 8.8
+    },
+    {
+      "name": "Dharavi Redevelopment",
+      "status": "Planning",
+      "completion": "2028-12-31",
+      "impact_score": 9.5
+    }
+  ],
+  "insights": [
+    "Nighttime lights intensity has increased by 15% over the past year",
+    "BKC shows highest economic activity with 24/7 operations",
+    "Urban expansion is primarily towards the eastern suburbs",
+    "Infrastructure development is keeping pace with population growth"
+  ],
+  "thresholds": {
+    "low_activity": 30,
+    "moderate_activity": 50,
+    "high_activity": 70,
+    "very_high_activity": 85
+  }
+}

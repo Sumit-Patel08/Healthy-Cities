@@ -1,0 +1,107 @@
+{
+  "flood_risk_level": "Moderate",
+  "current_rainfall": 12.5,
+  "rainfall_24h": 45.8,
+  "water_level_status": "Normal",
+  "ndwi_average": 0.42,
+  "flood_probability": 0.35,
+  "monsoon_status": "Active",
+  "drainage_capacity": 78,
+  "flood_zones": [
+    {
+      "location": "Sion",
+      "coordinates": [72.8619, 19.0434],
+      "risk_level": "High",
+      "water_depth_forecast": 0.8,
+      "evacuation_status": "Alert"
+    },
+    {
+      "location": "Kurla",
+      "coordinates": [72.8797, 19.0728],
+      "risk_level": "Moderate",
+      "water_depth_forecast": 0.4,
+      "evacuation_status": "Monitor"
+    },
+    {
+      "location": "Bandra",
+      "coordinates": [72.8777, 19.0596],
+      "risk_level": "Low",
+      "water_depth_forecast": 0.1,
+      "evacuation_status": "Normal"
+    }
+  ],
+  "time_series": [
+    { "timestamp": "2024-01-01T00:00:00Z", "rainfall": 0.0, "water_level": 2.1 },
+    { "timestamp": "2024-01-01T03:00:00Z", "rainfall": 2.5, "water_level": 2.3 },
+    { "timestamp": "2024-01-01T06:00:00Z", "rainfall": 8.2, "water_level": 2.8 },
+    { "timestamp": "2024-01-01T09:00:00Z", "rainfall": 15.6, "water_level": 3.5 },
+    { "timestamp": "2024-01-01T12:00:00Z", "rainfall": 12.5, "water_level": 3.2 },
+    { "timestamp": "2024-01-01T15:00:00Z", "rainfall": 18.9, "water_level": 3.8 },
+    { "timestamp": "2024-01-01T18:00:00Z", "rainfall": 22.1, "water_level": 4.1 },
+    { "timestamp": "2024-01-01T21:00:00Z", "rainfall": 8.7, "water_level": 3.6 }
+  ],
+  "ndwi_analysis": {
+    "current_value": 0.42,
+    "description": "Normalized Difference Water Index from Landsat",
+    "water_body_extent": 156.8,
+    "change_from_baseline": "+12.5%",
+    "geotiff_url": "/data/ndwi_mumbai_latest.tif"
+  },
+  "smap_soil_moisture": {
+    "current_value": 0.68,
+    "description": "Soil moisture from SMAP satellite",
+    "saturation_level": "High",
+    "infiltration_capacity": "Limited"
+  },
+  "reservoir_levels": [
+    {
+      "name": "Tansa",
+      "current_level": 87.5,
+      "capacity": 100,
+      "status": "Good"
+    },
+    {
+      "name": "Vihar",
+      "current_level": 92.1,
+      "capacity": 100,
+      "status": "Excellent"
+    },
+    {
+      "name": "Tulsi",
+      "current_level": 78.9,
+      "capacity": 100,
+      "status": "Adequate"
+    }
+  ],
+  "drainage_systems": {
+    "storm_drains": {
+      "capacity_utilization": 78,
+      "blocked_drains": 23,
+      "maintenance_required": 45
+    },
+    "pumping_stations": {
+      "operational": 18,
+      "under_maintenance": 2,
+      "efficiency": 85
+    }
+  },
+  "water_quality": {
+    "ph_level": 7.2,
+    "turbidity": 4.8,
+    "dissolved_oxygen": 6.5,
+    "bacterial_count": "Within limits",
+    "overall_grade": "B+"
+  },
+  "insights": [
+    "Drainage capacity is at 78% utilization during peak rainfall",
+    "23 storm drains are currently blocked and need immediate attention",
+    "Soil moisture levels indicate high flood risk in low-lying areas",
+    "Reservoir levels are adequate for the current monsoon season"
+  ],
+  "thresholds": {
+    "low_risk": 0.2,
+    "moderate_risk": 0.4,
+    "high_risk": 0.6,
+    "extreme_risk": 0.8
+  }
+}
