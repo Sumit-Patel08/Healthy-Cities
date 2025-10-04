@@ -28,7 +28,7 @@ const mockTempData = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <AnimatedBackground />
       <DashboardSidebar />
       <DashboardHeader />
@@ -50,25 +50,26 @@ export default function DashboardPage() {
                 <AreaChart data={mockAQIData}>
                   <defs>
                     <linearGradient id="colorAQI" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="hsl(var(--chart-1))" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="hsl(var(--chart-1))" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.6} />
+                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.1} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-                  <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" opacity={0.5} />
+                  <XAxis dataKey="time" stroke="#64748b" fontSize={12} fontWeight={500} />
+                  <YAxis stroke="#64748b" fontSize={12} fontWeight={500} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: "hsl(var(--card))",
-                      border: "1px solid hsl(var(--border))",
+                      backgroundColor: "#ffffff",
+                      border: "1px solid #e2e8f0",
                       borderRadius: "8px",
+                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                     }}
                   />
                   <Area
                     type="monotone"
                     dataKey="value"
-                    stroke="hsl(var(--chart-1))"
-                    strokeWidth={2}
+                    stroke="#3b82f6"
+                    strokeWidth={3}
                     fill="url(#colorAQI)"
                   />
                 </AreaChart>
@@ -78,22 +79,23 @@ export default function DashboardPage() {
             <ChartCard title="Temperature Trend" description="Last 24 hours" delay={0.5}>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={mockTempData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-                  <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                  <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" opacity={0.5} />
+                  <XAxis dataKey="time" stroke="#64748b" fontSize={12} fontWeight={500} />
+                  <YAxis stroke="#64748b" fontSize={12} fontWeight={500} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: "hsl(var(--card))",
-                      border: "1px solid hsl(var(--border))",
+                      backgroundColor: "#ffffff",
+                      border: "1px solid #e2e8f0",
                       borderRadius: "8px",
+                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                     }}
                   />
                   <Line
                     type="monotone"
                     dataKey="value"
-                    stroke="hsl(var(--chart-2))"
+                    stroke="#8b5cf6"
                     strokeWidth={3}
-                    dot={{ fill: "hsl(var(--chart-2))", r: 4 }}
+                    dot={{ fill: "#8b5cf6", r: 5, strokeWidth: 2, stroke: "#fff" }}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -102,11 +104,11 @@ export default function DashboardPage() {
 
           {/* Map Placeholder */}
           <ChartCard title="Mumbai Environmental Map" description="Interactive satellite view" delay={0.6}>
-            <div className="w-full h-96 rounded-lg bg-secondary/50 flex items-center justify-center border border-border relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-primary/5" />
+            <div className="w-full h-96 rounded-lg bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center border-2 border-blue-200 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10" />
               <div className="text-center space-y-2 relative z-10">
-                <p className="text-muted-foreground">Interactive map will be displayed here</p>
-                <p className="text-sm text-muted-foreground">Powered by Mapbox GL JS</p>
+                <p className="text-gray-700 font-medium">Interactive map will be displayed here</p>
+                <p className="text-sm text-gray-600">Powered by Mapbox GL JS</p>
               </div>
             </div>
           </ChartCard>

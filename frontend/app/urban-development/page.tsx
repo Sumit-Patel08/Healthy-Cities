@@ -37,7 +37,7 @@ const landUseStats = [
 
 export default function UrbanDevelopmentPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <DashboardSidebar />
       <DashboardHeader />
 
@@ -46,12 +46,12 @@ export default function UrbanDevelopmentPage() {
           {/* Page Header */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-2">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Building2 className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <Building2 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="font-display text-3xl font-bold">Urban Development</h1>
-                <p className="text-muted-foreground">Tracking urban expansion and land use changes</p>
+                <h1 className="font-display text-3xl font-bold text-gray-800">Urban Development</h1>
+                <p className="text-gray-600">Tracking urban expansion and land use changes</p>
               </div>
             </div>
           </motion.div>
@@ -64,13 +64,13 @@ export default function UrbanDevelopmentPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-panel rounded-xl p-4 hover:glow-amber transition-all"
+                className="bg-gradient-to-br from-white to-purple-50 rounded-xl p-4 border border-purple-100 shadow-lg hover:shadow-xl hover:scale-105 transition-all"
               >
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-semibold text-xs">{stat.category}</h3>
-                  <TrendingUp className="w-3 h-3 text-primary" />
+                  <h3 className="font-semibold text-xs text-gray-800">{stat.category}</h3>
+                  <TrendingUp className="w-3 h-3 text-purple-500" />
                 </div>
-                <p className="text-2xl font-display font-bold">{stat.percentage}%</p>
+                <p className="text-2xl font-display font-bold text-gray-800">{stat.percentage}%</p>
               </motion.div>
             ))}
           </div>
@@ -79,35 +79,36 @@ export default function UrbanDevelopmentPage() {
           <ChartCard title="Urban Expansion Timeline" description="Land use changes (2000-2025)" delay={0.4}>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart data={urbanGrowthData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-                <XAxis dataKey="year" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" opacity={0.5} />
+                <XAxis dataKey="year" stroke="#64748b" fontSize={12} fontWeight={500} />
+                <YAxis stroke="#64748b" fontSize={12} fontWeight={500} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "hsl(var(--card))",
-                    border: "1px solid hsl(var(--border))",
+                    backgroundColor: "#ffffff",
+                    border: "1px solid #e2e8f0",
                     borderRadius: "8px",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                   }}
                 />
                 <Legend />
                 <Line
                   type="monotone"
                   dataKey="urban"
-                  stroke="hsl(var(--chart-4))"
+                  stroke="#f97316"
                   strokeWidth={3}
                   name="Urban Area (%)"
                 />
                 <Line
                   type="monotone"
                   dataKey="green"
-                  stroke="hsl(var(--chart-3))"
+                  stroke="#10b981"
                   strokeWidth={3}
                   name="Green Spaces (%)"
                 />
                 <Line
                   type="monotone"
                   dataKey="water"
-                  stroke="hsl(var(--chart-1))"
+                  stroke="#3b82f6"
                   strokeWidth={3}
                   name="Water Bodies (%)"
                 />
@@ -119,17 +120,18 @@ export default function UrbanDevelopmentPage() {
           <ChartCard title="Current Land Use Distribution" description="Percentage breakdown by category" delay={0.5}>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={landUseStats} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-                <XAxis type="number" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <YAxis dataKey="category" type="category" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" opacity={0.5} />
+                <XAxis type="number" stroke="#64748b" fontSize={12} fontWeight={500} />
+                <YAxis dataKey="category" type="category" stroke="#64748b" fontSize={12} fontWeight={500} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "hsl(var(--card))",
-                    border: "1px solid hsl(var(--border))",
+                    backgroundColor: "#ffffff",
+                    border: "1px solid #e2e8f0",
                     borderRadius: "8px",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                   }}
                 />
-                <Bar dataKey="percentage" fill="hsl(var(--chart-2))" radius={[0, 8, 8, 0]} />
+                <Bar dataKey="percentage" fill="#8b5cf6" radius={[0, 8, 8, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </ChartCard>

@@ -8,7 +8,7 @@ import { AnimatedBackground } from "@/components/animated-background"
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
       <AnimatedBackground />
 
       {/* Hero Section */}
@@ -20,29 +20,29 @@ export default function LandingPage() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-6">
-              <Satellite className="w-4 h-4 text-primary" />
-              <span className="text-sm text-muted-foreground">NASA Space Apps Challenge 2025</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 shadow-md mb-6">
+              <Satellite className="w-4 h-4 text-blue-600" />
+              <span className="text-sm text-gray-700 font-medium">NASA Space Apps Challenge 2025</span>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-balance">
-              <span className="text-foreground">CityForge</span>
+              <span className="text-gray-800">CityForge</span>
               <br />
-              <span className="text-primary text-glow">Mumbai Pulse</span>
+              <span className="bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 bg-clip-text text-transparent">Mumbai Pulse</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance">
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto text-balance">
               Monitoring Mumbai's environmental health and urban resilience through NASA satellite data
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
               <Link href="/dashboard">
-                <Button size="lg" className="glow-amber group text-lg px-8">
+                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl group text-lg px-8">
                   Launch Dashboard
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent">
+              <Button size="lg" variant="outline" className="text-lg px-8 bg-white border-2 border-blue-300 text-gray-700 hover:bg-blue-50 shadow-md">
                 Learn More
               </Button>
             </div>
@@ -60,8 +60,8 @@ export default function LandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Environmental Intelligence</h2>
-            <p className="text-xl text-muted-foreground">Real-time monitoring powered by space technology</p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-gray-800">Environmental Intelligence</h2>
+            <p className="text-xl text-gray-600">Real-time monitoring powered by space technology</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -75,12 +75,12 @@ export default function LandingPage() {
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
               >
                 <Link href={feature.href}>
-                  <div className="glass-panel rounded-xl p-6 h-full hover:glow-amber transition-all cursor-pointer group">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                      <feature.icon className="w-6 h-6 text-primary" />
+                  <div className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 h-full border border-blue-100 shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer group">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-4 shadow-md">
+                      <feature.icon className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="font-display text-xl font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-muted-foreground text-sm">{feature.description}</p>
+                    <h3 className="font-display text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
+                    <p className="text-gray-600 text-sm">{feature.description}</p>
                   </div>
                 </Link>
               </motion.div>
@@ -90,7 +90,7 @@ export default function LandingPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-32 px-4 border-t border-border">
+      <section className="relative py-32 px-4 border-t border-blue-200">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -106,8 +106,8 @@ export default function LandingPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <p className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p className="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">{stat.value}</p>
+                <p className="text-sm text-gray-600 font-medium">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -115,7 +115,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-12 px-4 border-t border-border">
+      <footer className="relative py-12 px-4 border-t border-blue-200 bg-gradient-to-b from-transparent to-blue-50">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0 }}
@@ -123,8 +123,8 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <p className="text-muted-foreground">Built for NASA Space Apps Challenge 2025</p>
-            <p className="text-sm text-muted-foreground">Powered by NASA Earth Observation Data</p>
+            <p className="text-gray-700 font-medium">Built for NASA Space Apps Challenge 2025</p>
+            <p className="text-sm text-gray-600">Powered by NASA Earth Observation Data</p>
           </motion.div>
         </div>
       </footer>

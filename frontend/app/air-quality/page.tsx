@@ -36,7 +36,7 @@ const aqiZones = [
 
 export default function AirQualityPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <DashboardSidebar />
       <DashboardHeader />
 
@@ -45,12 +45,12 @@ export default function AirQualityPage() {
           {/* Page Header */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-2">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Wind className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <Wind className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="font-display text-3xl font-bold">Air Quality Intelligence</h1>
-                <p className="text-muted-foreground">Real-time pollutant monitoring across Mumbai</p>
+                <h1 className="font-display text-3xl font-bold text-gray-800">Air Quality Intelligence</h1>
+                <p className="text-gray-600">Real-time pollutant monitoring across Mumbai</p>
               </div>
             </div>
           </motion.div>
@@ -63,14 +63,14 @@ export default function AirQualityPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-panel rounded-xl p-4 hover:glow-blue transition-all"
+                className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-4 border border-blue-100 shadow-lg hover:shadow-xl hover:scale-105 transition-all"
               >
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-semibold text-sm">{zone.zone}</h3>
-                  <AlertCircle className={`w-4 h-4 ${zone.aqi > 100 ? "text-red-400" : "text-yellow-400"}`} />
+                  <h3 className="font-semibold text-sm text-gray-800">{zone.zone}</h3>
+                  <AlertCircle className={`w-4 h-4 ${zone.aqi > 100 ? "text-red-500" : "text-yellow-500"}`} />
                 </div>
-                <p className="text-3xl font-display font-bold mb-1">{zone.aqi}</p>
-                <p className="text-xs text-muted-foreground">{zone.status}</p>
+                <p className="text-3xl font-display font-bold mb-1 text-gray-800">{zone.aqi}</p>
+                <p className="text-xs text-gray-600">{zone.status}</p>
               </motion.div>
             ))}
           </div>
@@ -79,21 +79,22 @@ export default function AirQualityPage() {
           <ChartCard title="Pollutant Trends" description="Monthly average concentrations (µg/m³)" delay={0.4}>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart data={pollutantData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-                <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" opacity={0.5} />
+                <XAxis dataKey="month" stroke="#64748b" fontSize={12} fontWeight={500} />
+                <YAxis stroke="#64748b" fontSize={12} fontWeight={500} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "hsl(var(--card))",
-                    border: "1px solid hsl(var(--border))",
+                    backgroundColor: "#ffffff",
+                    border: "1px solid #e2e8f0",
                     borderRadius: "8px",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                   }}
                 />
                 <Legend />
-                <Line type="monotone" dataKey="PM25" stroke="hsl(var(--chart-1))" strokeWidth={2} name="PM2.5" />
-                <Line type="monotone" dataKey="PM10" stroke="hsl(var(--chart-2))" strokeWidth={2} name="PM10" />
-                <Line type="monotone" dataKey="NO2" stroke="hsl(var(--chart-3))" strokeWidth={2} name="NO₂" />
-                <Line type="monotone" dataKey="SO2" stroke="hsl(var(--chart-4))" strokeWidth={2} name="SO₂" />
+                <Line type="monotone" dataKey="PM25" stroke="#3b82f6" strokeWidth={3} name="PM2.5" />
+                <Line type="monotone" dataKey="PM10" stroke="#8b5cf6" strokeWidth={3} name="PM10" />
+                <Line type="monotone" dataKey="NO2" stroke="#10b981" strokeWidth={3} name="NO₂" />
+                <Line type="monotone" dataKey="SO2" stroke="#f59e0b" strokeWidth={3} name="SO₂" />
               </LineChart>
             </ResponsiveContainer>
           </ChartCard>
@@ -102,17 +103,18 @@ export default function AirQualityPage() {
           <ChartCard title="Current Pollutant Levels" description="Latest measurements by zone" delay={0.5}>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={aqiZones}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-                <XAxis dataKey="zone" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" opacity={0.5} />
+                <XAxis dataKey="zone" stroke="#64748b" fontSize={12} fontWeight={500} />
+                <YAxis stroke="#64748b" fontSize={12} fontWeight={500} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "hsl(var(--card))",
-                    border: "1px solid hsl(var(--border))",
+                    backgroundColor: "#ffffff",
+                    border: "1px solid #e2e8f0",
                     borderRadius: "8px",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                   }}
                 />
-                <Bar dataKey="aqi" fill="hsl(var(--chart-1))" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="aqi" fill="#3b82f6" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </ChartCard>

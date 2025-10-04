@@ -11,21 +11,21 @@ const indices = [
   {
     name: "Environmental Health",
     score: 72,
-    color: "hsl(var(--chart-3))",
+    color: "#10b981",
     icon: Leaf,
     description: "Overall environmental quality",
   },
   {
     name: "Resilience Score",
     score: 68,
-    color: "hsl(var(--chart-1))",
+    color: "#3b82f6",
     icon: Shield,
     description: "Urban resilience capacity",
   },
   {
     name: "Sustainability Index",
     score: 75,
-    color: "hsl(var(--chart-2))",
+    color: "#8b5cf6",
     icon: TrendingUp,
     description: "Long-term sustainability",
   },
@@ -33,7 +33,7 @@ const indices = [
 
 export default function IndicesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <DashboardSidebar />
       <DashboardHeader />
 
@@ -42,12 +42,12 @@ export default function IndicesPage() {
           {/* Page Header */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-2">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
-                <BarChart3 className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                <BarChart3 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="font-display text-3xl font-bold">Composite Indices</h1>
-                <p className="text-muted-foreground">Comprehensive environmental and resilience metrics</p>
+                <h1 className="font-display text-3xl font-bold text-gray-800">Composite Indices</h1>
+                <p className="text-gray-600">Comprehensive environmental and resilience metrics</p>
               </div>
             </div>
           </motion.div>
@@ -60,19 +60,19 @@ export default function IndicesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-panel rounded-xl p-6 hover:glow-blue transition-all"
+                className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 border border-blue-100 shadow-lg hover:shadow-xl hover:scale-105 transition-all"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <index.icon className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md">
+                    <index.icon className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-sm font-medium px-3 py-1 rounded-full bg-primary/20 text-primary">
+                  <span className="text-sm font-bold px-3 py-1 rounded-full bg-blue-100 text-blue-700 shadow-sm">
                     {index.score}/100
                   </span>
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-2">{index.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{index.description}</p>
-                <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
+                <h3 className="font-display text-xl font-semibold mb-2 text-gray-800">{index.name}</h3>
+                <p className="text-sm text-gray-600 mb-4">{index.description}</p>
+                <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${index.score}%` }}
@@ -106,7 +106,8 @@ export default function IndicesPage() {
                       y="50%"
                       textAnchor="middle"
                       dominantBaseline="middle"
-                      className="font-display text-4xl font-bold fill-foreground"
+                      className="font-display text-4xl font-bold"
+                      fill="#1f2937"
                     >
                       {index.score}
                     </text>
@@ -120,25 +121,25 @@ export default function IndicesPage() {
           <ChartCard title="Overall Assessment" description="Mumbai's environmental status" delay={0.7}>
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20">
-                  <h4 className="font-semibold text-green-400 mb-2">Strengths</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
+                <div className="p-4 rounded-lg bg-green-100 border-2 border-green-300">
+                  <h4 className="font-semibold text-green-700 mb-2">Strengths</h4>
+                  <ul className="text-sm text-gray-700 space-y-1">
                     <li>• Good water resource management</li>
                     <li>• Improving air quality trends</li>
                     <li>• Strong monitoring infrastructure</li>
                   </ul>
                 </div>
-                <div className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
-                  <h4 className="font-semibold text-yellow-400 mb-2">Concerns</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
+                <div className="p-4 rounded-lg bg-yellow-100 border-2 border-yellow-300">
+                  <h4 className="font-semibold text-yellow-700 mb-2">Concerns</h4>
+                  <ul className="text-sm text-gray-700 space-y-1">
                     <li>• Urban heat island effects</li>
                     <li>• Rapid urban expansion</li>
                     <li>• Seasonal air quality issues</li>
                   </ul>
                 </div>
-                <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
-                  <h4 className="font-semibold text-blue-400 mb-2">Recommendations</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
+                <div className="p-4 rounded-lg bg-blue-100 border-2 border-blue-300">
+                  <h4 className="font-semibold text-blue-700 mb-2">Recommendations</h4>
+                  <ul className="text-sm text-gray-700 space-y-1">
                     <li>• Increase green cover</li>
                     <li>• Enhance public transport</li>
                     <li>• Implement cool roofs</li>

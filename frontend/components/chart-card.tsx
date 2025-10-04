@@ -16,11 +16,11 @@ export function ChartCard({ title, description, children, delay = 0 }: ChartCard
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className="glass-panel rounded-xl p-6"
+      className="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 rounded-xl p-6 shadow-md"
     >
       <div className="mb-6">
-        <h3 className="font-display text-lg font-semibold mb-1">{title}</h3>
-        {description && <p className="text-sm text-muted-foreground">{description}</p>}
+        <h3 className="font-display text-lg font-semibold mb-1 text-gray-800">{title}</h3>
+        {description && <p className="text-sm text-gray-600">{description}</p>}
       </div>
       <div className="w-full">{children}</div>
     </motion.div>
