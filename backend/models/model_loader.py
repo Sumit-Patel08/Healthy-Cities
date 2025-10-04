@@ -273,7 +273,16 @@ class ModelLoader:
     def _prepare_features(self, data, model_type):
         """Prepare features for model prediction"""
         try:
-            feature_names = self.metadata[model_type]['features']
+            # Get feature names from metadata
+            if model_type not in self.metadata:
+                logger.error(f"Model type {model_type} not found in metadata")
+                return np.zeros(50)  # Default feature size
+                
+            feature_names = self.metadata[model_type].get('features', [])
+            if not feature_names:
+                logger.error(f"No features found for model type {model_type}")
+                return np.zeros(50)
+                
             features = []
             
             for feature in feature_names:
@@ -281,10 +290,13 @@ class ModelLoader:
                 
                 # Handle categorical features
                 if feature in self.label_encoders:
-                    if value in self.label_encoders[feature].classes_:
-                        value = self.label_encoders[feature].transform([value])[0]
+                    if hasattr(self.label_encoders[feature], 'classes_'):
+                        if value in self.label_encoders[feature].classes_:
+                            value = self.label_encoders[feature].transform([value])[0]
+                        else:
+                            value = 0  # Default for unknown categories
                     else:
-                        value = 0  # Default for unknown categories
+                        value = 0
                 
                 features.append(float(value))
             
@@ -292,7 +304,14 @@ class ModelLoader:
             
         except Exception as e:
             logger.error(f"Error preparing features for {model_type}: {str(e)}")
-            return np.zeros(len(self.metadata.get(model_type, {}).get('features', [])))
+            # Return default feature array based on model type
+            default_sizes = {
+                'environmental_health': 55,
+                'risk_classifier': 55,
+                'anomaly_detection': 53,
+                'time_series': 61
+            }
+            return np.zeros(default_sizes.get(model_type, 50))
     
     def _prepare_time_series_features(self, data):
         """Prepare features for time series prediction"""

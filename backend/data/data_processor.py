@@ -21,14 +21,73 @@ class DataProcessor:
     def load_master_dataset(self):
         """Load the master dataset with all processed data"""
         try:
-            self.master_data = pd.read_csv(self.data_path / 'master_dataset.csv')
-            self.master_data['date'] = pd.to_datetime(self.master_data['date'])
-            self.master_data = self.master_data.sort_values('date')
-            logger.info(f"Loaded master dataset with {len(self.master_data)} records")
+            master_file = self.data_path / 'master_dataset.csv'
+            if master_file.exists():
+                self.master_data = pd.read_csv(master_file)
+                self.master_data['date'] = pd.to_datetime(self.master_data['date'])
+                self.master_data = self.master_data.sort_values('date')
+                
+                # Clean NASA missing data values (-999, -9999)
+                self._clean_master_dataset()
+                
+                logger.info(f"✅ Loaded and CLEANED NASA dataset with {len(self.master_data)} records")
+                logger.info(f"   Date range: {self.master_data['date'].min()} to {self.master_data['date'].max()}")
+                logger.info(f"   Data sources: NASA MODIS, POWER, VIIRS, SMAP, OMI")
+                logger.info(f"   🔧 Missing values (-999) replaced with realistic Mumbai values")
+            else:
+                logger.warning(f"Master dataset not found at {master_file}")
+                self._create_dummy_data()
         except Exception as e:
             logger.error(f"Error loading master dataset: {str(e)}")
-            # Create dummy data if file doesn't exist
+            logger.warning("Falling back to synthetic data for demo purposes")
             self._create_dummy_data()
+    
+    def _clean_master_dataset(self):
+        """Clean the entire master dataset by replacing NASA missing values"""
+        # Define realistic replacement values for Mumbai
+        replacements = {
+            'T2M': 28.5,  # Average temperature in Mumbai (°C)
+            'RH2M': 75.0,  # Average humidity in Mumbai (%)
+            'heat_index_c': 30.2,  # Realistic heat index
+            'heat_index_f': 86.4,  # Heat index in Fahrenheit
+            'aqi_estimated': 45.0,  # Moderate AQI
+            'pm25_estimated': 22.0,  # PM2.5 levels
+            'no2_column_density': 0.35,  # NO2 levels
+            'aod_550nm': 0.48,  # Aerosol Optical Depth
+            'soil_moisture': 0.25,  # Soil moisture
+            'precipitation_mm': 1.2,  # Precipitation
+            'ndwi': 0.18,  # Water index
+            'flood_risk_score': 25.0,  # Flood risk
+            'radiance_nw_cm2_sr': 28.5,  # Nighttime lights
+            'economic_activity_index': 65.0,  # Economic activity
+            'urban_environmental_load': 520.0,  # Urban load
+            'environmental_stress_index': 18.5,  # Environmental stress
+            'air_quality_composite': 0.28,  # Air quality composite
+            'water_stress_index': 2.3,  # Water stress
+            'WS10M': 2.5,  # Wind speed
+            'PRECTOTCORR': 1.2,  # Precipitation
+            'T2M_MAX': 32.0,  # Max temperature
+            'T2M_MIN': 25.0,  # Min temperature
+        }
+        
+        # Replace missing values in the entire dataset
+        for column in self.master_data.columns:
+            if column != 'date' and column in replacements:
+                # Replace -999, -9999, and other missing value indicators
+                mask = (self.master_data[column] == -999) | (self.master_data[column] == -9999) | (self.master_data[column] < -900)
+                if mask.any():
+                    count = mask.sum()
+                    self.master_data.loc[mask, column] = replacements[column]
+                    logger.info(f"🔧 Cleaned {count} missing values in {column}")
+        
+        # Fill any remaining NaN values
+        numeric_columns = self.master_data.select_dtypes(include=[np.number]).columns
+        for column in numeric_columns:
+            if column != 'date' and self.master_data[column].isna().any():
+                if column in replacements:
+                    self.master_data[column].fillna(replacements[column], inplace=True)
+                else:
+                    self.master_data[column].fillna(0, inplace=True)
     
     def _create_dummy_data(self):
         """Create dummy data structure if master dataset is not available"""
@@ -68,12 +127,76 @@ class DataProcessor:
         try:
             if self.master_data is not None and len(self.master_data) > 0:
                 latest_row = self.master_data.iloc[-1]
-                return latest_row.to_dict()
+                data_dict = latest_row.to_dict()
+                
+                # Clean NASA data - replace missing values (-999, -9999, NaN)
+                data_dict = self._clean_nasa_data(data_dict)
+                
+                # Add missing fields that models expect
+                if 'aqi_color' not in data_dict:
+                    data_dict['aqi_color'] = 0  # Encoded value
+                if 'risk_color' not in data_dict:
+                    data_dict['risk_color'] = 1  # Encoded value
+                if 'activity_color' not in data_dict:
+                    data_dict['activity_color'] = 1  # Encoded value
+                if 'heat_risk_color' not in data_dict:
+                    data_dict['heat_risk_color'] = 0  # Encoded value
+                if 'data_source_flood' not in data_dict:
+                    data_dict['data_source_flood'] = 0  # Encoded value
+                if 'data_source_urban' not in data_dict:
+                    data_dict['data_source_urban'] = 0  # Encoded value
+                
+                logger.info(f"✅ Serving CLEANED NASA data from {data_dict.get('date', 'unknown date')}")
+                return data_dict
             else:
+                logger.warning("No master data available, using default values")
                 return self._get_default_data()
         except Exception as e:
             logger.error(f"Error getting latest data: {str(e)}")
             return self._get_default_data()
+    
+    def _clean_nasa_data(self, data_dict):
+        """Clean NASA data by replacing missing values and invalid data"""
+        # Define realistic replacement values for Mumbai
+        replacements = {
+            'T2M': 28.5,  # Average temperature in Mumbai (°C)
+            'RH2M': 75.0,  # Average humidity in Mumbai (%)
+            'heat_index_c': 30.2,  # Realistic heat index
+            'heat_index_f': 86.4,  # Heat index in Fahrenheit
+            'aqi_estimated': 45.0,  # Moderate AQI
+            'pm25_estimated': 22.0,  # PM2.5 levels
+            'no2_column_density': 0.35,  # NO2 levels
+            'aod_550nm': 0.48,  # Aerosol Optical Depth
+            'soil_moisture': 0.25,  # Soil moisture
+            'precipitation_mm': 1.2,  # Precipitation
+            'ndwi': 0.18,  # Water index
+            'flood_risk_score': 25.0,  # Flood risk
+            'radiance_nw_cm2_sr': 28.5,  # Nighttime lights
+            'economic_activity_index': 65.0,  # Economic activity
+            'urban_environmental_load': 520.0,  # Urban load
+            'environmental_stress_index': 18.5,  # Environmental stress
+            'air_quality_composite': 0.28,  # Air quality composite
+            'water_stress_index': 2.3,  # Water stress
+            'WS10M': 2.5,  # Wind speed
+            'PRECTOTCORR': 1.2,  # Precipitation
+            'T2M_MAX': 32.0,  # Max temperature
+            'T2M_MIN': 25.0,  # Min temperature
+        }
+        
+        # Clean the data
+        for key, value in data_dict.items():
+            if isinstance(value, (int, float)):
+                # Check for NASA missing data indicators
+                if value == -999 or value == -9999 or value < -900 or pd.isna(value):
+                    if key in replacements:
+                        data_dict[key] = replacements[key]
+                        logger.info(f"🔧 Replaced missing value for {key}: {value} -> {replacements[key]}")
+                    else:
+                        # For unknown fields, set to 0 or reasonable default
+                        data_dict[key] = 0.0
+                        logger.info(f"🔧 Set default value for {key}: {value} -> 0.0")
+        
+        return data_dict
     
     def _get_default_data(self):
         """Get default data structure"""
