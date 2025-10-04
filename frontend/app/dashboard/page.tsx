@@ -266,69 +266,6 @@ export default function DashboardPage() {
                 className="rounded-lg"
               />
               
-              {/* Environmental Data Overlay */}
-              <div className="absolute inset-0 pointer-events-none">
-                {/* Air Quality Hotspot - Map Pin Style */}
-                <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 pointer-events-auto">
-                  <div className="relative">
-                    {/* Map Pin */}
-                    <div className="w-8 h-10 bg-red-600 rounded-t-full rounded-bl-full transform rotate-45 shadow-xl border-2 border-white relative">
-                      <div className="absolute top-1 left-1 w-6 h-6 bg-red-500 rounded-full transform -rotate-45 flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">!</span>
-                      </div>
-                    </div>
-                    {/* Info Popup */}
-                    <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
-                      AQI: {airQualityData?.data?.current_aqi?.toFixed(0) || dashboardData?.current_conditions?.aqi?.toFixed(0) || '156'}
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-4 border-transparent border-t-black/90"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Temperature Sensors - Map Pin Style */}
-                <div className="absolute top-1/4 right-1/3 pointer-events-auto">
-                  <div className="relative">
-                    <div className="w-6 h-8 bg-orange-600 rounded-t-full rounded-bl-full transform rotate-45 shadow-xl border-2 border-white relative">
-                      <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-orange-500 rounded-full transform -rotate-45 flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">T</span>
-                      </div>
-                    </div>
-                    <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
-                      {weatherData?.data?.weather?.temperature?.toFixed(0) || '34'}°C
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-4 border-transparent border-t-black/90"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="absolute bottom-1/3 left-1/3 pointer-events-auto">
-                  <div className="relative">
-                    <div className="w-5 h-6 bg-yellow-600 rounded-t-full rounded-bl-full transform rotate-45 shadow-xl border-2 border-white relative">
-                      <div className="absolute top-0.5 left-0.5 w-3 h-3 bg-yellow-500 rounded-full transform -rotate-45 flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">T</span>
-                      </div>
-                    </div>
-                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-1 py-0.5 rounded text-xs whitespace-nowrap">
-                      {(weatherData?.data?.weather?.temperature || 32) - 2}°C
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-4 border-transparent border-t-black/90"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Humidity Zones - Map Pin Style */}
-                <div className="absolute top-1/2 right-1/4 pointer-events-auto">
-                  <div className="relative">
-                    <div className="w-5 h-6 bg-blue-600 rounded-t-full rounded-bl-full transform rotate-45 shadow-xl border-2 border-white relative">
-                      <div className="absolute top-0.5 left-0.5 w-3 h-3 bg-blue-500 rounded-full transform -rotate-45 flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">H</span>
-                      </div>
-                    </div>
-                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-1 py-0.5 rounded text-xs whitespace-nowrap">
-                      {weatherData?.data?.weather?.humidity?.toFixed(0) || '78'}%
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-4 border-transparent border-t-black/90"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               
               {/* Data Panel */}
               <div className="absolute bottom-4 left-4 bg-black/90 rounded-lg p-3 text-white shadow-xl pointer-events-auto">
