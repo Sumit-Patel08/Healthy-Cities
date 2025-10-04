@@ -17,11 +17,12 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts"
-import { AlertCircle, Wind, Satellite, Activity } from "lucide-react"
-import { apiClient, AirQualityData, getAQIColor, getAQICategory } from "@/lib/api"
+import { AlertCircle, Wind, Satellite, Activity, Zap } from "lucide-react"
+import { apiClient, AirQualityData, RealtimeAirQualityData, getAQIColor, getAQICategory } from "@/lib/api"
 
 export default function AirQualityPage() {
   const [airQualityData, setAirQualityData] = useState<AirQualityData | null>(null)
+  const [realtimeAirQuality, setRealtimeAirQuality] = useState<RealtimeAirQualityData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [timeRange, setTimeRange] = useState(7)
@@ -33,13 +34,23 @@ export default function AirQualityPage() {
   const fetchAirQualityData = async () => {
     try {
       setLoading(true)
-      const response = await apiClient.getAirQuality(timeRange)
       
-      if (response.error) {
-        setError(response.error)
-      } else if (response.data) {
-        setAirQualityData(response.data as AirQualityData)
+      // Fetch both NASA historical data and real-time Meteomatics data
+      const [nasaResponse, realtimeResponse] = await Promise.all([
+        apiClient.getAirQuality(timeRange),
+        apiClient.getRealtimeAirQuality()
+      ])
+      
+      if (nasaResponse.error) {
+        setError(nasaResponse.error)
+      } else if (nasaResponse.data) {
+        setAirQualityData(nasaResponse.data as AirQualityData)
         setError(null)
+      }
+
+      // Set real-time air quality data from Meteomatics
+      if (realtimeResponse.data) {
+        setRealtimeAirQuality(realtimeResponse.data as RealtimeAirQualityData)
       }
     } catch (err) {
       setError('Failed to fetch air quality data')
@@ -63,7 +74,7 @@ export default function AirQualityPage() {
                 </div>
                 <div>
                   <h1 className="font-display text-3xl font-bold text-gray-800">Air Quality Intelligence</h1>
-                  <p className="text-gray-600">Real-time NASA satellite data monitoring</p>
+                  <p className="text-gray-600">NASA satellite data + Real-time Meteomatics monitoring</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -122,9 +133,110 @@ export default function AirQualityPage() {
             </div>
           )}
 
+          {/* Real-time Air Quality from Meteomatics */}
+          {realtimeAirQuality && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6 shadow-lg"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <Zap className="w-6 h-6 text-green-600" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">🔴 Real-time Air Quality - Mumbai</h3>
+                    <p className="text-sm text-gray-600">Live data from Meteomatics API • Updated every 5 minutes</p>
+                  </div>
+                </div>
+                {realtimeAirQuality.data.current_aqi && (
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-gray-800">
+                      {realtimeAirQuality.data.current_aqi.toFixed(0)}
+                    </p>
+                    <p className="text-sm text-gray-600">Current AQI</p>
+                  </div>
+                )}
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                {realtimeAirQuality.data.pollutants.pm2_5 && (
+                  <div className="text-center">
+                    <p className="text-lg font-bold text-gray-800">
+                      {realtimeAirQuality.data.pollutants.pm2_5.toFixed(1)}
+                    </p>
+                    <p className="text-xs text-gray-600">PM2.5 μg/m³</p>
+                  </div>
+                )}
+                {realtimeAirQuality.data.pollutants.pm10 && (
+                  <div className="text-center">
+                    <p className="text-lg font-bold text-gray-800">
+                      {realtimeAirQuality.data.pollutants.pm10.toFixed(1)}
+                    </p>
+                    <p className="text-xs text-gray-600">PM10 μg/m³</p>
+                  </div>
+                )}
+                {realtimeAirQuality.data.pollutants.no2 && (
+                  <div className="text-center">
+                    <p className="text-lg font-bold text-gray-800">
+                      {realtimeAirQuality.data.pollutants.no2.toFixed(1)}
+                    </p>
+                    <p className="text-xs text-gray-600">NO2 μg/m³</p>
+                  </div>
+                )}
+                {realtimeAirQuality.data.pollutants.o3 && (
+                  <div className="text-center">
+                    <p className="text-lg font-bold text-gray-800">
+                      {realtimeAirQuality.data.pollutants.o3.toFixed(1)}
+                    </p>
+                    <p className="text-xs text-gray-600">O3 μg/m³</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Health Impact */}
+              <div className="bg-white rounded-lg p-4">
+                <h4 className="font-semibold text-gray-800 mb-2">Health Impact Assessment</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <span className="text-gray-600">Overall Risk: </span>
+                    <span className="font-medium text-gray-800">{realtimeAirQuality.data.health_impact.overall_risk}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">Sensitive Groups: </span>
+                    <span className="font-medium text-gray-800">{realtimeAirQuality.data.health_impact.sensitive_groups_risk}</span>
+                  </div>
+                </div>
+                {realtimeAirQuality.data.health_impact.primary_concern && (
+                  <p className="text-sm text-gray-700 mt-2">
+                    <strong>Primary Concern:</strong> {realtimeAirQuality.data.health_impact.primary_concern}
+                  </p>
+                )}
+                
+                {/* Recommendations */}
+                {realtimeAirQuality.data.recommendations.length > 0 && (
+                  <div className="mt-3">
+                    <h5 className="font-medium text-gray-800 mb-2">Recommendations:</h5>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      {realtimeAirQuality.data.recommendations.slice(0, 3).map((rec, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                          {rec}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+
           {airQualityData && (
             <>
-              {/* Current Air Quality Metrics */}
+              {/* Historical Air Quality Metrics from NASA Satellites */}
+              <div className="mb-4">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">📡 NASA Satellite Data - Historical Analysis</h3>
+                <p className="text-sm text-gray-600">MODIS and OMI satellite measurements • Updated daily</p>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

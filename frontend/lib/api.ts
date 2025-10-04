@@ -99,6 +99,33 @@ class ApiClient {
   async getRealTimeUpdate() {
     return this.request('/real-time-update');
   }
+
+  // ========== METEOMATICS WEATHER API ENDPOINTS ==========
+  
+  // Current weather conditions (real-time from Meteomatics)
+  async getCurrentWeather() {
+    return this.request('/weather/current');
+  }
+
+  // Weather forecast (up to 7 days)
+  async getWeatherForecast(hours: number = 24) {
+    return this.request(`/weather/forecast?hours=${hours}`);
+  }
+
+  // Real-time air quality from Meteomatics
+  async getRealtimeAirQuality() {
+    return this.request('/air-quality/realtime');
+  }
+
+  // Heat stress analysis
+  async getHeatStress() {
+    return this.request('/heat-stress');
+  }
+
+  // Health alerts based on current conditions
+  async getHealthAlerts() {
+    return this.request('/weather/health-alerts');
+  }
 }
 
 // Export singleton instance
@@ -236,6 +263,114 @@ export interface EnvironmentalIndices {
   index_explanations: Record<string, string>;
   risk_thresholds: Record<string, { min: number; max: number; color: string }>;
   last_updated: string;
+}
+
+// ========== METEOMATICS DATA INTERFACES ==========
+
+export interface CurrentWeatherData {
+  success: boolean;
+  data: {
+    location: {
+      city: string;
+      latitude: number;
+      longitude: number;
+    };
+    timestamp: string;
+    weather: {
+      temperature: number | null;
+      humidity: number | null;
+      precipitation: number | null;
+      wind_speed: number | null;
+      wind_direction: number | null;
+      pressure: number | null;
+      uv_index: number | null;
+      weather_code: number | null;
+    };
+    air_quality: {
+      aqi: number | null;
+      pm2_5: number | null;
+      pm10: number | null;
+      no2: number | null;
+      o3: number | null;
+      so2: number | null;
+      co: number | null;
+    };
+    environmental: {
+      solar_radiation: number | null;
+      soil_temperature: number | null;
+      soil_moisture: number | null;
+      evapotranspiration: number | null;
+      heat_index: number | null;
+    };
+    health_indices: {
+      air_quality_risk: string;
+      heat_stress_risk: string;
+      uv_risk: string;
+    };
+  };
+}
+
+export interface WeatherForecastData {
+  success: boolean;
+  data: Array<{
+    timestamp: string;
+    temperature: number | null;
+    humidity: number | null;
+    precipitation: number | null;
+    wind_speed: number | null;
+    weather_code: number | null;
+    health_risk: string;
+  }>;
+  forecast_hours: number;
+}
+
+export interface RealtimeAirQualityData {
+  success: boolean;
+  data: {
+    current_aqi: number | null;
+    pollutants: {
+      pm2_5: number | null;
+      pm10: number | null;
+      no2: number | null;
+      o3: number | null;
+      so2: number | null;
+      co: number | null;
+    };
+    health_impact: {
+      overall_risk: string;
+      sensitive_groups_risk: string;
+      primary_concern: string | null;
+    };
+    recommendations: string[];
+    timestamp: string;
+  };
+}
+
+export interface HeatStressData {
+  success: boolean;
+  data: {
+    current_temperature: number | null;
+    heat_index: number | null;
+    humidity: number | null;
+    uv_index: number | null;
+    risk_level: string;
+    recommendations: string[];
+    timestamp: string;
+  };
+}
+
+export interface HealthAlertsData {
+  success: boolean;
+  data: {
+    alerts: Array<{
+      type: string;
+      level: string;
+      message: string;
+      recommendations: string[];
+    }>;
+    alert_count: number;
+    timestamp: string;
+  };
 }
 
 // Utility functions

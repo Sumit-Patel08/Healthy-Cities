@@ -51,6 +51,12 @@ class Config:
     NASA_POWER_API = 'https://power.larc.nasa.gov/api/temporal/daily/point'
     NASA_EARTHDATA_API = 'https://earthdata.nasa.gov/api'
     
+    # Meteomatics Weather API settings
+    METEOMATICS_USERNAME = os.environ.get('METEOMATICS_USERNAME')
+    METEOMATICS_PASSWORD = os.environ.get('METEOMATICS_PASSWORD')
+    METEOMATICS_BASE_URL = 'https://api.meteomatics.com'
+    METEOMATICS_TIMEOUT = 30
+    
     # Mumbai coordinates
     MUMBAI_LAT = 19.0760
     MUMBAI_LON = 72.8777

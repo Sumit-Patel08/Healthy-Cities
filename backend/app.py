@@ -21,6 +21,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'mumbai_pulse_data
 from models.model_loader import ModelLoader
 from data.data_processor import DataProcessor
 from utils.real_time_data import RealTimeDataFetcher
+from utils.weather_service import WeatherService
+from config import config
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -34,6 +36,18 @@ logger = logging.getLogger(__name__)
 model_loader = ModelLoader()
 data_processor = DataProcessor()
 real_time_fetcher = RealTimeDataFetcher()
+
+# Initialize weather service
+app_config = config.get(os.environ.get('FLASK_ENV', 'development'), config['default'])
+weather_service = None
+if app_config.METEOMATICS_USERNAME and app_config.METEOMATICS_PASSWORD:
+    weather_service = WeatherService(
+        meteomatics_username=app_config.METEOMATICS_USERNAME,
+        meteomatics_password=app_config.METEOMATICS_PASSWORD
+    )
+    logger.info("Weather service initialized with Meteomatics API")
+else:
+    logger.warning("Meteomatics credentials not found. Weather service disabled.")
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
@@ -322,6 +336,159 @@ def get_health_recommendations(aqi):
             'message': 'Everyone should limit outdoor activities.',
             'color': 'red'
         }
+
+# Weather API Endpoints
+@app.route('/api/weather/current', methods=['GET'])
+def get_current_weather():
+    """Get current weather conditions for Mumbai"""
+    if not weather_service:
+        return jsonify({
+            'error': 'Weather service not available',
+            'message': 'Meteomatics API credentials not configured'
+        }), 503
+    
+    try:
+        current_conditions = weather_service.get_mumbai_current_conditions()
+        return jsonify({
+            'success': True,
+            'data': current_conditions
+        })
+    except Exception as e:
+        logger.error(f"Failed to get current weather: {str(e)}")
+        return jsonify({
+            'error': 'Failed to fetch weather data',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/weather/forecast', methods=['GET'])
+def get_weather_forecast():
+    """Get weather forecast for Mumbai"""
+    if not weather_service:
+        return jsonify({
+            'error': 'Weather service not available',
+            'message': 'Meteomatics API credentials not configured'
+        }), 503
+    
+    # Get hours parameter from query string
+    hours = request.args.get('hours', 24, type=int)
+    hours = min(hours, 168)  # Limit to 7 days
+    
+    try:
+        forecast_data = weather_service.get_mumbai_forecast(hours)
+        return jsonify({
+            'success': True,
+            'data': forecast_data,
+            'forecast_hours': hours
+        })
+    except Exception as e:
+        logger.error(f"Failed to get weather forecast: {str(e)}")
+        return jsonify({
+            'error': 'Failed to fetch forecast data',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/air-quality/realtime', methods=['GET'])
+def get_realtime_air_quality():
+    """Get real-time air quality analysis"""
+    if not weather_service:
+        return jsonify({
+            'error': 'Weather service not available',
+            'message': 'Meteomatics API credentials not configured'
+        }), 503
+    
+    try:
+        air_quality_analysis = weather_service.get_air_quality_analysis()
+        return jsonify({
+            'success': True,
+            'data': air_quality_analysis
+        })
+    except Exception as e:
+        logger.error(f"Failed to get air quality analysis: {str(e)}")
+        return jsonify({
+            'error': 'Failed to fetch air quality data',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/heat-stress', methods=['GET'])
+def get_heat_stress():
+    """Get heat stress analysis"""
+    if not weather_service:
+        return jsonify({
+            'error': 'Weather service not available',
+            'message': 'Meteomatics API credentials not configured'
+        }), 503
+    
+    try:
+        heat_stress_analysis = weather_service.get_heat_stress_analysis()
+        return jsonify({
+            'success': True,
+            'data': heat_stress_analysis
+        })
+    except Exception as e:
+        logger.error(f"Failed to get heat stress analysis: {str(e)}")
+        return jsonify({
+            'error': 'Failed to fetch heat stress data',
+            'message': str(e)
+        }), 500
+
+@app.route('/api/weather/health-alerts', methods=['GET'])
+def get_health_alerts():
+    """Get health alerts based on current weather conditions"""
+    if not weather_service:
+        return jsonify({
+            'error': 'Weather service not available',
+            'message': 'Meteomatics API credentials not configured'
+        }), 503
+    
+    try:
+        current_conditions = weather_service.get_mumbai_current_conditions()
+        air_quality_analysis = weather_service.get_air_quality_analysis()
+        heat_stress_analysis = weather_service.get_heat_stress_analysis()
+        
+        alerts = []
+        
+        # Check air quality alerts
+        if air_quality_analysis.get('current_aqi', 0) > 150:
+            alerts.append({
+                'type': 'air_quality',
+                'level': 'high',
+                'message': 'Unhealthy air quality detected',
+                'recommendations': air_quality_analysis.get('recommendations', [])
+            })
+        
+        # Check heat stress alerts
+        if heat_stress_analysis.get('risk_level') in ['High', 'Extreme']:
+            alerts.append({
+                'type': 'heat_stress',
+                'level': heat_stress_analysis.get('risk_level', '').lower(),
+                'message': f"{heat_stress_analysis.get('risk_level')} heat stress risk",
+                'recommendations': heat_stress_analysis.get('recommendations', [])
+            })
+        
+        # Check UV alerts
+        health_indices = current_conditions.get('health_indices', {})
+        if health_indices.get('uv_risk') in ['Very High', 'Extreme']:
+            alerts.append({
+                'type': 'uv_exposure',
+                'level': 'high',
+                'message': f"{health_indices.get('uv_risk')} UV exposure risk",
+                'recommendations': ['Avoid prolonged sun exposure', 'Use sunscreen SPF 30+', 'Wear protective clothing']
+            })
+        
+        return jsonify({
+            'success': True,
+            'data': {
+                'alerts': alerts,
+                'alert_count': len(alerts),
+                'timestamp': datetime.utcnow().isoformat()
+            }
+        })
+    except Exception as e:
+        logger.error(f"Failed to get health alerts: {str(e)}")
+        return jsonify({
+            'error': 'Failed to generate health alerts',
+            'message': str(e)
+        }), 500
 
 def get_anomaly_recommendations(anomalies):
     """Get recommendations based on detected anomalies"""
