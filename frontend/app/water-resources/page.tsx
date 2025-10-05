@@ -1,7 +1,7 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import { DashboardHeader } from "@/components/dashboard-header"
+import { DashboardSidebar } from "@/components/dashboard-sidebar"
 import { ChartCard } from "@/components/chart-card"
 import { motion } from "framer-motion"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"

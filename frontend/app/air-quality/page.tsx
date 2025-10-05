@@ -15,8 +15,9 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from "recharts"
-import { Wind, Satellite, AlertCircle, Zap } from "lucide-react"
+import { Wind, Satellite, AlertCircle, Zap, Activity } from "lucide-react"
 import { apiClient, RealtimeAirQualityData, formatDate, getAQIColor } from "@/lib/api"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
 
