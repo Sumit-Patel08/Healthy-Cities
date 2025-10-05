@@ -1,0 +1,7 @@
+# Ignore frontend files to force Python detection
+../frontend/
+../package.json
+../package-lock.json
+../node_modules/
+../.next/
+../vercel.json
