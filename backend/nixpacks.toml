@@ -1,18 +1,5 @@
 [providers]
 python = "3.11"
 
-[variables]
-PYTHONPATH = "/app"
-NIXPACKS_PYTHON_VERSION = "3.11"
-
-[phases.setup]
-cmds = ["python --version", "pip --version"]
-
-[phases.install]
-cmds = ["pip install -r requirements.txt"]
-
-[phases.build]
-cmds = ["echo 'Build phase complete'"]
-
 [start]
 cmd = "gunicorn app:app --bind 0.0.0.0:$PORT"
