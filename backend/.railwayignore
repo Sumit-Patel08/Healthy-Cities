@@ -5,3 +5,8 @@
 ../node_modules/
 ../.next/
 ../vercel.json
+
+# Ignore Node.js files in backend
+package.json
+package-lock.json
+node_modules/
