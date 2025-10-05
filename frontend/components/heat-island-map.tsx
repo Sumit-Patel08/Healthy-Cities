@@ -96,7 +96,7 @@ export function HeatIslandMap({ weatherData, heatStressData }: HeatIslandMapProp
 
   // Create custom marker icons
   const createHeatIcon = (point: any) => {
-    if (!L) return null
+    if (!L || !L.divIcon) return null
     
     return L.divIcon({
       html: `
@@ -134,7 +134,7 @@ export function HeatIslandMap({ weatherData, heatStressData }: HeatIslandMapProp
     })
   }
 
-  if (!isClient) {
+  if (!isClient || !L) {
     return (
       <div className="w-full h-96 rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
         <div className="text-center">
@@ -159,28 +159,33 @@ export function HeatIslandMap({ weatherData, heatStressData }: HeatIslandMapProp
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         
-        {/* Heat island markers */}
-        {heatPoints.map((point, index) => (
-          <Marker
-            key={index}
-            position={point.position}
-            icon={createHeatIcon(point)}
-          >
-            <Popup>
-              <div style={{ padding: '8px', textAlign: 'center', minWidth: '160px' }}>
-                <div style={{ color: point.color, fontWeight: 'bold', fontSize: '16px', marginBottom: '6px' }}>
-                  {point.level}
+        {/* Heat island markers - only render when Leaflet is loaded */}
+        {L && heatPoints.map((point, index) => {
+          const icon = createHeatIcon(point)
+          if (!icon) return null
+          
+          return (
+            <Marker
+              key={index}
+              position={point.position}
+              icon={icon}
+            >
+              <Popup>
+                <div style={{ padding: '8px', textAlign: 'center', minWidth: '160px' }}>
+                  <div style={{ color: point.color, fontWeight: 'bold', fontSize: '16px', marginBottom: '6px' }}>
+                    {point.level}
+                  </div>
+                  <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#333', marginBottom: '6px' }}>
+                    {point.temp}°C
+                  </div>
+                  <div style={{ color: '#666', fontSize: '14px' }}>
+                    {point.location}
+                  </div>
                 </div>
-                <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#333', marginBottom: '6px' }}>
-                  {point.temp}°C
-                </div>
-                <div style={{ color: '#666', fontSize: '14px' }}>
-                  {point.location}
-                </div>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+              </Popup>
+            </Marker>
+          )
+        })}
       </MapContainer>
 
       {/* Heat Index Control */}

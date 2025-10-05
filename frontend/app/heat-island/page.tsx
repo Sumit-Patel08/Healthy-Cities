@@ -9,6 +9,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { Thermometer, TrendingUp, Zap, AlertTriangle } from "lucide-react"
 import { apiClient, CurrentWeatherData, HeatStressData } from "@/lib/api"
 import { HeatIslandMap } from "@/components/heat-island-map"
+import { ProtectedRoute } from "@/components/ProtectedRoute"
 
 const temperatureData = [
   { time: "00:00", urban: 28, rural: 24 },
@@ -65,9 +66,10 @@ export default function HeatIslandPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <DashboardSidebar />
-      <DashboardHeader />
+    <ProtectedRoute requireAuth={true}>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <DashboardSidebar />
+        <DashboardHeader />
 
       <main className="ml-64 pt-16 p-8">
         <div className="max-w-7xl mx-auto space-y-8">
@@ -256,6 +258,7 @@ export default function HeatIslandPage() {
           </ChartCard>
         </div>
       </main>
-    </div>
+      </div>
+    </ProtectedRoute>
   )
 }

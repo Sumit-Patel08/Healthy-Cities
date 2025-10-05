@@ -7,6 +7,7 @@ import { MetricCard } from "@/components/metric-card"
 import { ChartCard } from "@/components/chart-card"
 import { AnimatedBackground } from "@/components/animated-background"
 import { WeatherWidget } from "@/components/weather-widget"
+import { ProtectedRoute } from "@/components/ProtectedRoute"
 import { Wind, Thermometer, Droplets, Building2, AlertTriangle, Satellite, Cloud } from "lucide-react"
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import { apiClient, DashboardOverview, CurrentWeatherData, RealtimeAirQualityData, formatDate, getRiskColor, getAQIColor } from "@/lib/api"
@@ -92,10 +93,11 @@ export default function DashboardPage() {
     )
   }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <AnimatedBackground />
-      <DashboardSidebar />
-      <DashboardHeader />
+    <ProtectedRoute requireAuth={true}>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <AnimatedBackground />
+        <DashboardSidebar />
+        <DashboardHeader />
 
       <main className="ml-64 pt-16 p-8">
         <div className="max-w-7xl mx-auto space-y-8">
@@ -301,6 +303,7 @@ export default function DashboardPage() {
           </ChartCard>
         </div>
       </main>
-    </div>
+      </div>
+    </ProtectedRoute>
   )
 }

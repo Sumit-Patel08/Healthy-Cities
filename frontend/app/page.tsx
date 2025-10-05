@@ -2,14 +2,52 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Satellite, Droplets, Thermometer, Building2 } from "lucide-react"
+import { ArrowRight, Satellite, Droplets, Thermometer, Building2, User, LogIn } from "lucide-react"
 import Link from "next/link"
 import { AnimatedBackground } from "@/components/animated-background"
+import { useAuth } from "@/contexts/AuthContext"
 
 export default function LandingPage() {
+  const { user } = useAuth()
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
       <AnimatedBackground />
+
+      {/* Header */}
+      <header className="absolute top-0 left-0 right-0 z-50 p-6">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <Satellite className="w-8 h-8 text-blue-600" />
+            <span className="font-display text-xl font-bold text-gray-800">CityForge</span>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            {user ? (
+              <Link href="/dashboard">
+                <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg">
+                  <User className="w-4 h-4 mr-2" />
+                  Dashboard
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link href="/login">
+                  <Button variant="ghost" className="text-gray-700 hover:text-gray-900">
+                    <LogIn className="w-4 h-4 mr-2" />
+                    Login
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg">
+                    Get Started
+                  </Button>
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      </header>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
@@ -36,12 +74,21 @@ export default function LandingPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-              <Link href="/dashboard">
-                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl group text-lg px-8">
-                  Launch Dashboard
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              {user ? (
+                <Link href="/dashboard">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl group text-lg px-8">
+                    Launch Dashboard
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              ) : (
+                <Link href="/signup">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl group text-lg px-8">
+                    Get Started Free
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              )}
               <Button size="lg" variant="outline" className="text-lg px-8 bg-white border-2 border-blue-300 text-gray-700 hover:bg-blue-50 shadow-md">
                 Learn More
               </Button>
@@ -74,15 +121,32 @@ export default function LandingPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
               >
-                <Link href={feature.href}>
-                  <div className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 h-full border border-blue-100 shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer group">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-4 shadow-md">
-                      <feature.icon className="w-6 h-6 text-white" />
+                {user ? (
+                  <Link href={feature.href}>
+                    <div className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 h-full border border-blue-100 shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer group">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-4 shadow-md">
+                        <feature.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="font-display text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
+                      <p className="text-gray-600 text-sm">{feature.description}</p>
                     </div>
-                    <h3 className="font-display text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
-                    <p className="text-gray-600 text-sm">{feature.description}</p>
-                  </div>
-                </Link>
+                  </Link>
+                ) : (
+                  <Link href="/login">
+                    <div className="bg-gradient-to-br from-white to-blue-50 rounded-xl p-6 h-full border border-blue-100 shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer group relative">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center mb-4 shadow-md">
+                        <feature.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="font-display text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
+                      <p className="text-gray-600 text-sm">{feature.description}</p>
+                      <div className="absolute inset-0 bg-black bg-opacity-10 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="bg-white rounded-lg px-4 py-2 shadow-lg">
+                          <p className="text-sm font-medium text-gray-800">Login Required</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                )}
               </motion.div>
             ))}
           </div>

@@ -1,19 +1,18 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { DashboardSidebar } from "@/components/dashboard-sidebar"
 import { DashboardHeader } from "@/components/dashboard-header"
 import { ChartCard } from "@/components/chart-card"
 import { motion } from "framer-motion"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import { Droplets, CloudRain, Zap } from "lucide-react"
-import { apiClient, CurrentWeatherData } from "@/lib/api"
+import { apiClient, WaterResourcesData, formatDate } from "@/lib/api"
+import { ProtectedRoute } from "@/components/ProtectedRoute"
 import { WaterResourcesMap } from "@/components/water-resources-map"
 
 const rainfallData = [
   { month: "Jan", rainfall: 2, moisture: 35 },
   { month: "Feb", rainfall: 1, moisture: 32 },
-  { month: "Mar", rainfall: 3, moisture: 38 },
   { month: "Apr", rainfall: 5, moisture: 42 },
   { month: "May", rainfall: 18, moisture: 55 },
   { month: "Jun", rainfall: 485, moisture: 78 },
@@ -50,9 +49,10 @@ export default function WaterResourcesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <DashboardSidebar />
-      <DashboardHeader />
+    <ProtectedRoute requireAuth={true}>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <DashboardSidebar />
+        <DashboardHeader />
 
       <main className="ml-64 pt-16 p-8">
         <div className="max-w-7xl mx-auto space-y-8">
@@ -171,6 +171,7 @@ export default function WaterResourcesPage() {
           </ChartCard>
         </div>
       </main>
-    </div>
+      </div>
+    </ProtectedRoute>
   )
 }

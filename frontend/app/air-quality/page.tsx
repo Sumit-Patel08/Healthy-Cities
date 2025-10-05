@@ -15,10 +15,36 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
 } from "recharts"
-import { AlertCircle, Wind, Satellite, Activity, Zap } from "lucide-react"
-import { apiClient, AirQualityData, RealtimeAirQualityData, getAQIColor, getAQICategory } from "@/lib/api"
+import { Wind, Satellite, AlertCircle, Zap } from "lucide-react"
+import { apiClient, RealtimeAirQualityData, formatDate, getAQIColor } from "@/lib/api"
+import { ProtectedRoute } from "@/components/ProtectedRoute"
+
+interface AirQualityData {
+  data_source: string
+  current_aqi: number
+  aqi_category: string
+  pollutants: {
+    pm2_5: number
+    pm10: number
+    no2: number
+    o3: number
+    co: number
+    so2: number
+  }
+  historical_data: Array<{
+    date: string
+    aqi: number
+    pm2_5: number
+    pm10: number
+  }>
+  health_impact: {
+    overall_risk: string
+    sensitive_groups_risk: string
+    primary_concern: string
+  }
+  recommendations: string[]
+}
 
 export default function AirQualityPage() {
   const [airQualityData, setAirQualityData] = useState<AirQualityData | null>(null)
@@ -59,9 +85,10 @@ export default function AirQualityPage() {
     }
   }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <DashboardSidebar />
-      <DashboardHeader />
+    <ProtectedRoute requireAuth={true}>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <DashboardSidebar />
+        <DashboardHeader />
 
       <main className="ml-64 pt-16 p-8">
         <div className="max-w-7xl mx-auto space-y-8">
@@ -383,6 +410,7 @@ export default function AirQualityPage() {
           )}
         </div>
       </main>
-    </div>
+      </div>
+    </ProtectedRoute>
   )
 }
